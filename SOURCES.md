@@ -10,7 +10,7 @@
 | 诺登斯 | 出现在《雾中怪屋》和《未知卡达斯梦寻》，并在后者中引导、帮助卡特逃离奈亚拉托提普。不是出自《猎犬》，也不是洛氏笔下从无善意的角色。 | [《雾中怪屋》](https://www.hplovecraft.com/writings/texts/fiction/shh.aspx)；[《未知卡达斯梦寻》](https://www.hplovecraft.com/writings/texts/fiction/dq.aspx)，末尾的追逐与引导。 |
 | 阿撒托斯 | 《未知卡达斯梦寻》写混沌中心、时间之外、鼓笛与舞蹈；不能将“整个宇宙是它的梦”当作洛氏明确写下的设定。1922 年同名残篇正文没有点出神名。 | [《未知卡达斯梦寻》](https://www.hplovecraft.com/writings/texts/fiction/dq.aspx)，开篇祭司警告；[《阿撒托斯》残篇](https://www.hplovecraft.com/writings/texts/fiction/az.aspx)。 |
 | 莎布·尼古拉丝 | “森之黑山羊，孕育万千子孙”祷词可在《暗夜呢喃》录音段落确认；《敦威治恐怖事件》有名字呼祷，但不宜把完整称号写成两篇反复同样出现。缺少详细描写，也不能推出它绝无意志。 | [《暗夜呢喃》](https://www.hplovecraft.com/writings/texts/fiction/wid.aspx)，仪式录音；[《敦威治恐怖事件》](https://www.hplovecraft.com/writings/texts/fiction/dh.aspx)，伪经段落。 |
-| 伊波恩与伊本·加兹 | Book of Eibon 是《伊波恩之书》，史密斯将其归于海伯波利亚巫师；洛氏《敦威治恐怖事件》的 Powder of Ibn-Ghazi 是另一事物。 | [史密斯《乌波·萨斯拉》原文](https://cthulhufiles.com/stories/smith/smith-ubbo-sathla.html)，开篇与典籍说明；[《敦威治恐怖事件》](https://www.hplovecraft.com/writings/texts/fiction/dh.aspx)。 |
+| 伊波恩与伊本·加兹 | Book of Eibon 是《伊波恩之书》，史密斯将其归于海伯波利亚巫师；洛氏《敦威治恐怖事件》的 Powder of Ibn-Ghazi 是另一事物。 | [史密斯《乌波·萨斯拉》原刊扫描](https://sffaudiomediacan.s3.amazonaws.com/pdfs/UbboSathlaByClarkAshtonSmith.pdf)，开篇与典籍说明；[《敦威治恐怖事件》](https://www.hplovecraft.com/writings/texts/fiction/dh.aspx)。 |
 | 印斯茅斯政府行动 | 原文为 1927–1928 年冬，公开消息在二月；焚烧、炸毁的是破败海滨房屋。报纸提到潜艇向魔鬼礁外深海发射鱼雷，未写“烧船、深水炸弹炸掉魔鬼礁”。 | [《印斯茅斯的阴霾》](https://www.hplovecraft.com/writings/texts/fiction/soi.aspx)，第一节开篇。 |
 | 伊斯之伟大种族 | 锥形身体是迁移后占据的躯体；其逃亡计划是迁入人类之后的甲虫形种族，后来再迁往水星的植物形生物，不是整体迁入人类社会避灾。 | [《超越时间之影》](https://www.hplovecraft.com/writings/texts/fiction/sot.aspx)，人类之后的种族与集体迁移段落。 |
 | 敦威治灾害 | 隐形巨物是威尔伯的双胞胎兄弟、犹格·索托斯的子嗣，不是犹格本体现身；怪物最终被阿米蒂奇等人消灭。因此“原著从无打败怪物”也不成立。 | [《敦威治恐怖事件》](https://www.hplovecraft.com/writings/texts/fiction/dh.aspx)，结尾的呼父与身份揭示。 |
