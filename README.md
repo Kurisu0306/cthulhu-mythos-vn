@@ -4,7 +4,7 @@
 
 ## 在线阅读
 
-[打开米斯卡托尼克讲义](https://kurisu0306.github.io/cthulhu-mythos-vn/)
+[打开米斯卡托尼克讲义](https://kurisu0306.github.io/cthulhu-mythos-vn/index.html)
 
 手机可直接打开此链接。进度保存在当前设备、当前浏览器中，不会在手机与电脑之间自动同步。
 

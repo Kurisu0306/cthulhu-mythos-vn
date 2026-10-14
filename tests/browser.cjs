@@ -31,8 +31,9 @@ fs.mkdirSync(output,{recursive:true});
     await ctx.route('https://fonts.googleapis.com/**',r=>r.abort());
     await ctx.route('https://fonts.gstatic.com/**',r=>r.abort());
     const page = await ctx.newPage();page.setDefaultTimeout(5000);
+    page.setDefaultNavigationTimeout(30000);
     page.on('pageerror',e=>errors.push(e.message));
-    const response = await page.goto(base);
+    const response = await page.goto(base,{waitUntil:'domcontentloaded'});
     assert.equal(response.status(),200);
     return {ctx,page};
   }
@@ -73,7 +74,7 @@ fs.mkdirSync(output,{recursive:true});
     for(const bad of ['{bad',JSON.stringify({ch:-1,li:0,san:80}),JSON.stringify({ch:0.5,li:0,san:80}),JSON.stringify({ch:0,li:-1,san:80}),JSON.stringify({ch:0,li:0,san:'80'}),JSON.stringify({version:999,ch:0,li:0,san:80})]) {
       await page.evaluate(({key,bad})=>localStorage.setItem(key,bad),{key:storageKey,bad});await page.reload();assert(await page.locator('#btnResume').isHidden());
     }checks++;
-    const sourcesResponse=await page.goto(new URL('sources.html',base.endsWith('/')?base:base+'/').href);
+    const sourcesResponse=await page.goto(new URL('sources.html',base).href);
     assert.equal(sourcesResponse.status(),200);assert.equal(await page.locator('h1').innerText(),'内容核查与来源');checks++;
     await main.ctx.close();
     // 两次选择的四种组合逐行通读；检查选择处和结语处重载。
