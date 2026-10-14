@@ -21,7 +21,10 @@ const storageKey = 'miskatonic-lecture-v1';
 fs.mkdirSync(output,{recursive:true});
 (async()=>{
   const engine = process.env.TEST_BROWSER || 'chromium';
-  const browser = await playwright[engine].launch(engine==='chromium' ? {channel:process.env.TEST_CHROME_CHANNEL||'chrome',headless:true} : {headless:true});
+  const launchOptions = {headless:true};
+  if(engine==='chromium')launchOptions.channel=process.env.TEST_CHROME_CHANNEL||'chrome';
+  if(process.env.TEST_PROXY)launchOptions.proxy={server:process.env.TEST_PROXY};
+  const browser = await playwright[engine].launch(launchOptions);
   let checks = 0;
   const errors = [];
   const report = [];
@@ -77,6 +80,13 @@ fs.mkdirSync(output,{recursive:true});
     const sourcesResponse=await page.goto(new URL('sources.html',base).href);
     assert.equal(sourcesResponse.status(),200);assert.equal(await page.locator('h1').innerText(),'内容核查与来源');checks++;
     await main.ctx.close();
+    // 字体服务长时间无响应也不能阻塞应用启动。
+    const fontCtx=await browser.newContext({reducedMotion:'reduce'});
+    await fontCtx.route('https://fonts.googleapis.com/**',()=>{});
+    const fontPage=await fontCtx.newPage();fontPage.on('pageerror',e=>errors.push(e.message));
+    await fontPage.goto(base,{waitUntil:'domcontentloaded',timeout:30000});
+    await fontPage.locator('#btnStart').click({timeout:5000});await chapterReady(fontPage);
+    assert((await fontPage.locator('#text').innerText()).includes('档案室'));await fontCtx.close();checks++;
     // 两次选择的四种组合逐行通读；检查选择处和结语处重载。
     const endings = [];
     for(const route of [[0,0],[0,1],[1,0],[1,1]]) {

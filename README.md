@@ -16,7 +16,7 @@
 python3 -m http.server 8000
 ```
 
-然后访问 `http://localhost:8000`。网页无需安装运行依赖；Google Fonts 加载失败时使用系统字体，正文和阅读交互仍可使用。
+然后访问 `http://localhost:8000`。网页无需安装运行依赖；Google Fonts 异步加载；加载失败或一直无响应时先使用系统字体，不阻塞正文与阅读交互。
 
 ## 阅读机制
 
@@ -48,7 +48,7 @@ npm test
 
 测试覆盖四条完整路线、全部档案、每种结语、新旧存档、选项刷新、损坏存档、章节重读、快速按键、抽屉焦点、终章档案、手机横竖屏、字体离线和减少动画设置。截图输出到被忽略的 `test-results/`。
 
-可通过 `TEST_BASE_URL` 验证已部署页面；通过 `TEST_BROWSER=webkit` 或 `firefox` 选择已安装的其他 Playwright 浏览器。测试结果需区分模拟手机视口与真实手机设备。
+可通过 `TEST_BASE_URL` 验证已部署页面；通过 `TEST_BROWSER=webkit` 或 `firefox` 选择已安装的其他 Playwright 浏览器；线上验证需要代理时，可设置 `TEST_PROXY`。测试结果需区分模拟手机视口与真实手机设备。
 
 ## 发布与维护
 
