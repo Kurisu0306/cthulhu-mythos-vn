@@ -1,0 +1,1545 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="九章视觉小说，读懂克苏鲁神话的作者、宇宙恐怖、神谱与典籍。">
+<meta name="theme-color" content="#06100f">
+<title>米斯卡托尼克讲义</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;600;900&display=swap">
+<style>
+/* ── 深海档案室 ─────────────────────────────────────────────
+   布局：全幅舞台 + 底部对白匣；页眉左章右理智，档案以抽屉自右侧抽出
+   色彩：墨青底 / 骨白字 / 海玻璃绿为主强调 / 铜锈金作典籍与年代的标记
+   字体：IM Fell English 承担拉丁神名（十七世纪印刷体，正是《死灵之书》的年代）
+        Noto Serif SC 承担正文与标题，Noto Sans SC 承担仪表与标签
+   ──────────────────────────────────────────────────────── */
+:root{
+  color-scheme: dark;
+  --bg:#06100f;
+  --bg-deep:#020807;
+  --surface:rgba(9,22,21,.80);
+  --surface-2:rgba(15,33,31,.94);
+  --fg:#d8dfd8;
+  --fg-dim:#94a7a0;
+  --fg-faint:#5b6f69;
+  --line:rgba(122,170,158,.20);
+  --line-strong:rgba(122,170,158,.44);
+  --accent:#68b5a3;
+  --accent-soft:rgba(104,181,163,.14);
+  --brass:#c3a167;
+  --danger:#c25c45;
+  --shadow:0 24px 60px rgba(0,0,0,.55);
+  --f-display:"IM Fell English","Noto Serif SC",Georgia,"Songti SC",serif;
+  --f-body:"Noto Serif SC","Songti SC",Georgia,serif;
+  --f-ui:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;
+  --gutter:max(16px,3.2vw);
+  --r:3px;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    color-scheme: light;
+    --bg:#e5e3d9;
+    --bg-deep:#d3d0c3;
+    --surface:rgba(247,246,239,.86);
+    --surface-2:rgba(252,251,246,.97);
+    --fg:#222521;
+    --fg-dim:#555d57;
+    --fg-faint:#8b938c;
+    --line:rgba(31,80,70,.18);
+    --line-strong:rgba(31,80,70,.42);
+    --accent:#1d6b5b;
+    --accent-soft:rgba(29,107,91,.12);
+    --brass:#8a6a2b;
+    --danger:#9c3b28;
+    --shadow:0 20px 44px rgba(40,45,40,.16);
+  }
+}
+:root[data-theme="light"]{
+  color-scheme: light;
+  --bg:#e5e3d9;
+  --bg-deep:#d3d0c3;
+  --surface:rgba(247,246,239,.86);
+  --surface-2:rgba(252,251,246,.97);
+  --fg:#222521;
+  --fg-dim:#555d57;
+  --fg-faint:#8b938c;
+  --line:rgba(31,80,70,.18);
+  --line-strong:rgba(31,80,70,.42);
+  --accent:#1d6b5b;
+  --accent-soft:rgba(29,107,91,.12);
+  --brass:#8a6a2b;
+  --danger:#9c3b28;
+  --shadow:0 20px 44px rgba(40,45,40,.16);
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.7;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.vn{position:fixed;inset:0;display:flex;flex-direction:column;overflow:hidden}
+#stage{position:absolute;inset:0;width:100%;height:100%;display:block}
+.grain{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:
+    radial-gradient(120% 80% at 50% 8%,transparent 40%,rgba(0,0,0,.42) 100%),
+    linear-gradient(to bottom,transparent 55%,rgba(0,0,0,.5) 100%);
+}
+:root[data-theme="light"] .grain{background:radial-gradient(120% 80% at 50% 10%,transparent 45%,rgba(60,70,64,.20) 100%),linear-gradient(to bottom,transparent 60%,rgba(90,95,88,.22) 100%)}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]) .grain{background:radial-gradient(120% 80% at 50% 10%,transparent 45%,rgba(60,70,64,.20) 100%),linear-gradient(to bottom,transparent 60%,rgba(90,95,88,.22) 100%)}
+}
+
+/* ── 页眉仪表 ── */
+.hud{
+  position:relative;z-index:4;display:flex;flex-wrap:wrap;gap:14px 20px;
+  align-items:flex-end;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top,0px) + 18px) var(--gutter) 0;
+}
+.hud__eyebrow{
+  font-family:var(--f-ui);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--fg-faint);display:block;
+}
+.hud__title{
+  font-family:var(--f-body);font-weight:600;font-size:clamp(1.05rem,2.4vw,1.4rem);
+  margin:.15em 0 0;letter-spacing:.02em;text-wrap:balance;
+}
+.hud__right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.chip{
+  font-family:var(--f-ui);font-size:.74rem;letter-spacing:.1em;
+  padding:7px 12px;border:1px solid var(--line);border-radius:var(--r);
+  color:var(--fg-dim);background:var(--surface);backdrop-filter:blur(8px);
+  transition:color .2s,border-color .2s;
+}
+.chip:hover{color:var(--fg);border-color:var(--line-strong)}
+.chip b{font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+.san{display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);padding:7px 12px;backdrop-filter:blur(8px)}
+.san__label{font-family:var(--f-ui);font-size:.62rem;letter-spacing:.22em;color:var(--fg-faint)}
+.san__track{width:clamp(52px,12vw,104px);height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.san__fill{display:block;height:100%;width:100%;background:var(--accent);transition:width .6s cubic-bezier(.3,.9,.3,1),background .6s}
+.san__num{font-family:var(--f-ui);font-size:.76rem;font-weight:500;font-variant-numeric:tabular-nums;min-width:2.2em;text-align:right}
+.san.hit .san__fill{animation:flash .5s ease}
+@keyframes flash{0%{filter:brightness(2.4)}100%{filter:none}}
+
+/* ── 舞台与章节卡 ── */
+.stagewrap{position:relative;z-index:3;flex:1;display:grid;place-items:center;padding:12px var(--gutter);min-height:0}
+.card{
+  text-align:center;max-width:34rem;
+  animation:cardin 1s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes cardin{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.card__no{font-family:var(--f-ui);font-size:.68rem;letter-spacing:.3em;color:var(--accent);text-transform:uppercase}
+.card__title{font-family:var(--f-body);font-weight:900;font-size:clamp(1.7rem,5.6vw,3rem);margin:.32em 0 0;
+  letter-spacing:.03em;line-height:1.25;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.5)}
+:root[data-theme="light"] .card__title{text-shadow:0 1px 18px rgba(255,255,255,.7)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card__title{text-shadow:0 1px 18px rgba(255,255,255,.7)}}
+.card__en{font-family:var(--f-display);font-style:italic;font-size:1rem;color:var(--fg-dim);margin:.5em 0 0}
+.card__rule{width:52px;height:1px;background:var(--line-strong);margin:1.1em auto 0}
+
+/* ── 对白匣 ── */
+.box{
+  position:relative;z-index:5;flex:0 0 auto;
+  margin:0 var(--gutter) calc(env(safe-area-inset-bottom,0px) + 20px);
+  padding:20px clamp(18px,3vw,32px) 16px;
+  background:var(--surface);backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-left:2px solid var(--accent);
+  border-radius:var(--r);box-shadow:var(--shadow);
+  max-width:62rem;width:auto;max-height:65dvh;overflow-y:auto;overscroll-behavior:contain;
+}
+@media (min-width:1080px){.box{margin-inline:auto;width:min(62rem,calc(100% - 2 * var(--gutter)))}}
+.box__who{
+  font-family:var(--f-ui);font-size:.72rem;letter-spacing:.2em;color:var(--accent);
+  display:flex;align-items:center;gap:.6em;margin-bottom:.85em;min-height:1em;
+}
+.box__who::after{content:"";flex:1;height:1px;background:var(--line)}
+.box__who[data-role="旁白"]{color:var(--fg-faint)}
+.box__who[data-role="洛夫克拉夫特"]{color:var(--brass)}
+.box__text{
+  margin:0;font-size:clamp(1rem,2.5vw,1.18rem);line-height:1.92;
+  min-height:calc(1.92em * 2);max-width:46em;color:var(--fg);
+}
+.box__text em{font-style:normal;color:var(--brass)}
+.box__text q{font-family:var(--f-display);font-style:italic;quotes:"\201C" "\201D"}
+.box__text .cur{color:var(--accent);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.box__foot{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:10px;min-height:1.4em}
+.box__hint{font-family:var(--f-ui);font-size:.68rem;letter-spacing:.14em;color:var(--fg-faint)}
+.box__next{font-size:1rem;color:var(--accent);padding:8px 12px;min-width:44px;min-height:44px}
+.box[data-state="choices"] .box__foot{visibility:hidden}
+
+/* ── 选项 ── */
+.choices{
+  position:absolute;z-index:6;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding-inline:var(--gutter);pointer-events:none;
+}
+.choice{
+  pointer-events:auto;width:min(40rem,100%);text-align:left;
+  font-family:var(--f-body);font-size:clamp(.94rem,2.2vw,1.04rem);
+  padding:14px 18px;border:1px solid var(--line-strong);border-radius:var(--r);
+  background:var(--surface-2);backdrop-filter:blur(10px);box-shadow:var(--shadow);
+  transition:border-color .2s,transform .2s,background .2s;
+  animation:cardin .5s cubic-bezier(.2,.8,.2,1) both;
+}
+.choice:nth-child(2){animation-delay:.08s}
+.choice:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateX(3px)}
+.choice span{font-family:var(--f-ui);font-size:.7rem;color:var(--fg-faint);display:block;margin-top:.4em;letter-spacing:.04em}
+
+/* ── 抽屉（档案 / 目录） ── */
+.scrim{position:absolute;inset:0;z-index:11;background:rgba(0,0,0,.5);backdrop-filter:blur(2px)}
+:root[data-theme="light"] .scrim{background:rgba(40,45,42,.35)}
+.drawer{
+  position:absolute;z-index:12;top:0;right:0;bottom:0;width:min(30rem,100%);
+  background:var(--surface-2);backdrop-filter:blur(18px);
+  border-left:1px solid var(--line-strong);
+  display:flex;flex-direction:column;
+  animation:slide .34s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes slide{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+.drawer__head{
+  padding:calc(env(safe-area-inset-top,0px) + 20px) 22px 14px;
+  border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+}
+.drawer__head h2{margin:0;font-family:var(--f-body);font-weight:600;font-size:1.1rem;letter-spacing:.05em}
+.drawer__head p{margin:.2em 0 0;font-family:var(--f-ui);font-size:.7rem;color:var(--fg-faint);letter-spacing:.08em}
+.drawer__close{font-family:var(--f-ui);font-size:.72rem;letter-spacing:.14em;color:var(--fg-dim);padding:6px 10px;border:1px solid var(--line);border-radius:var(--r)}
+.drawer__close:hover{color:var(--fg);border-color:var(--line-strong)}
+.drawer__body{overflow-y:auto;padding:18px 22px calc(env(safe-area-inset-bottom,0px) + 40px);flex:1;overscroll-behavior:contain}
+.ent__sources{font-family:var(--f-ui);font-size:.72rem;line-height:1.7;color:var(--fg-dim)}
+.ent__sources a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+
+.cat{margin:0 0 8px;font-family:var(--f-ui);font-size:.66rem;letter-spacing:.26em;color:var(--accent);text-transform:uppercase}
+.cat:not(:first-child){margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.ent{padding:12px 0;border-bottom:1px dashed var(--line)}
+.ent:last-child{border-bottom:0}
+.ent__top{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.ent__name{font-weight:600;font-size:.98rem;letter-spacing:.02em}
+.ent__en{font-family:var(--f-display);font-style:italic;font-size:.86rem;color:var(--fg-faint)}
+.tag{
+  font-family:var(--f-ui);font-size:.6rem;letter-spacing:.14em;padding:3px 7px;border-radius:2px;
+  border:1px solid var(--line-strong);color:var(--fg-dim);white-space:nowrap;
+}
+.tag[data-k="洛氏原著"]{color:var(--accent);border-color:var(--accent)}
+.tag[data-k="德雷斯体系"]{color:var(--brass);border-color:var(--brass)}
+.tag[data-k="后人扩展"]{color:var(--fg-dim)}
+.tag[data-k="流行文化"]{color:var(--danger);border-color:var(--danger)}
+.ent__body{font-size:.9rem;line-height:1.82;color:var(--fg-dim);margin:.55em 0 0}
+.ent__body strong{color:var(--fg);font-weight:600}
+.ent.locked .ent__name,.ent.locked .ent__en{color:var(--fg-faint);letter-spacing:.3em}
+.ent.locked .ent__body{color:var(--fg-faint);font-family:var(--f-ui);font-size:.78rem;letter-spacing:.06em}
+.ent.new .ent__name::after{content:"NEW";font-family:var(--f-ui);font-size:.55rem;letter-spacing:.14em;
+  color:var(--accent);border:1px solid var(--accent);border-radius:2px;padding:1px 4px;margin-left:8px;vertical-align:2px}
+
+/* 目录 */
+.tocitem{
+  display:flex;gap:14px;align-items:baseline;width:100%;text-align:left;
+  padding:14px 0;border-bottom:1px dashed var(--line);
+}
+.tocitem:disabled{opacity:.4;cursor:not-allowed}
+.tocitem__no{font-family:var(--f-ui);font-size:.66rem;letter-spacing:.2em;color:var(--fg-faint);min-width:3.4em}
+.tocitem__t{font-size:.98rem;font-weight:600;letter-spacing:.02em}
+.tocitem:hover:not(:disabled) .tocitem__t{color:var(--accent)}
+.tocitem.on .tocitem__t{color:var(--accent)}
+
+/* ── 解锁提示 ── */
+.toast{
+  position:absolute;z-index:7;left:50%;transform:translateX(-50%);
+  bottom:calc(env(safe-area-inset-bottom,0px) + 22px);
+  display:flex;flex-direction:column;gap:6px;align-items:center;pointer-events:none;
+}
+.toast__row{
+  font-family:var(--f-ui);font-size:.72rem;letter-spacing:.14em;
+  padding:7px 14px;border:1px solid var(--accent);border-radius:var(--r);
+  background:var(--surface-2);backdrop-filter:blur(10px);color:var(--accent);
+  animation:toastin .5s cubic-bezier(.2,.8,.2,1) both,toastout .6s 2.4s ease forwards;
+}
+@keyframes toastin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes toastout{to{opacity:0;transform:translateY(-6px)}}
+
+/* ── 幕布（开场 / 终章） ── */
+.scr{
+  position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:safe center;overflow-y:auto;overscroll-behavior:contain;
+  gap:22px;text-align:center;padding:calc(env(safe-area-inset-top,0px) + 28px) var(--gutter) calc(env(safe-area-inset-bottom,0px) + 28px);
+  background:linear-gradient(to bottom,rgba(2,8,7,.82),rgba(2,8,7,.94));
+}
+.scr > *{flex-shrink:0}
+:root[data-theme="light"] .scr{background:linear-gradient(to bottom,rgba(229,227,217,.9),rgba(211,208,195,.96))}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .scr{background:linear-gradient(to bottom,rgba(229,227,217,.9),rgba(211,208,195,.96))}}
+.scr__sigil{width:clamp(120px,26vw,190px);height:auto;opacity:.85}
+.scr h1{
+  font-family:var(--f-body);font-weight:900;font-size:clamp(2rem,7.5vw,3.6rem);margin:0;
+  letter-spacing:.06em;line-height:1.2;text-wrap:balance;
+}
+.scr__sub{font-family:var(--f-display);font-style:italic;font-size:1.05rem;color:var(--fg-dim);margin:0;letter-spacing:.04em}
+.scr__lede{max-width:34rem;font-size:.95rem;line-height:1.9;color:var(--fg-dim);margin:0}
+.scr__acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:4px}
+.act{
+  font-family:var(--f-ui);font-size:.8rem;letter-spacing:.14em;
+  padding:13px 26px;border:1px solid var(--line-strong);border-radius:var(--r);
+  transition:background .22s,border-color .22s,color .22s;
+}
+.act:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.act--ghost{color:var(--fg-dim)}
+.record{
+  display:flex;gap:clamp(18px,5vw,44px);flex-wrap:wrap;justify-content:center;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:16px clamp(14px,4vw,30px);margin:2px 0;
+}
+.record div{display:flex;flex-direction:column;gap:4px}
+.record dt{font-family:var(--f-ui);font-size:.6rem;letter-spacing:.22em;color:var(--fg-faint)}
+.record dd{margin:0;font-family:var(--f-ui);font-size:1.3rem;font-weight:500;font-variant-numeric:tabular-nums}
+.scr__note{max-width:34rem;font-family:var(--f-ui);font-size:.74rem;line-height:1.8;color:var(--fg-faint);margin:0}
+
+.shake{animation:shk .5s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shk{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(3px)}30%,50%,70%{transform:translateX(-5px)}40%,60%{transform:translateX(5px)}}
+
+@media (max-width:720px){
+  .hud{align-items:center}
+  .hud__title{font-size:1rem}
+  .san__track{width:46px}
+  .box{padding:16px 16px 12px}
+  .box__text{min-height:calc(1.92em * 3.2)}
+  .drawer{width:100%}
+  .choice:hover{transform:none}
+  .scr{gap:16px}
+  .scr__sigil{width:120px}
+  .scr__lede{font-size:.9rem}
+  .hud__right{gap:7px}
+  .box__hint{letter-spacing:.05em}
+}
+@media (max-height:500px){.scr__sigil{width:72px}.scr{justify-content:flex-start;gap:12px}.stagewrap{padding-block:4px}.card__title{font-size:1.4rem}.box{max-height:56dvh}.hud{padding-top:8px}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="vn" id="vn">
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="hud">
+    <div>
+      <span class="hud__eyebrow" id="chapNo">序章</span>
+      <h1 class="hud__title" id="chapTitle">档案室</h1>
+    </div>
+    <div class="hud__right">
+      <button class="chip" id="tocBtn" type="button">目录</button>
+      <button class="chip" id="codexBtn" type="button">档案 <b id="codexCount">0/55</b></button>
+      <div class="san" id="sanMeter" title="Sanity：阅读会消耗它">
+        <span class="san__label">SAN</span>
+        <span class="san__track"><span class="san__fill" id="sanFill"></span></span>
+        <span class="san__num" id="sanNum">100</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="stagewrap">
+    <div class="card" id="card" hidden>
+      <div class="card__no" id="cardNo"></div>
+      <h2 class="card__title" id="cardTitle"></h2>
+      <p class="card__en" id="cardEn"></p>
+      <div class="card__rule"></div>
+    </div>
+  </div>
+
+  <div class="box" id="box" data-state="idle">
+    <div class="box__who" id="who" data-role="旁白"></div>
+    <p class="box__text" id="text"></p>
+    <div class="box__foot">
+      <span class="box__hint" id="hint">点击继续</span>
+      <button class="box__next" id="nextBtn" type="button" aria-label="继续">▼</button>
+    </div>
+  </div>
+
+  <div class="choices" id="choices" hidden></div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <aside class="drawer" id="codex" hidden role="dialog" aria-modal="true" aria-label="档案" tabindex="-1">
+    <div class="drawer__head">
+      <div>
+        <h2>档案</h2>
+        <p id="codexProg">已解锁 0 / 55</p>
+      </div>
+      <button class="drawer__close" id="codexClose" type="button">关闭 ✕</button>
+    </div>
+    <div class="drawer__body" id="codexBody"></div>
+  </aside>
+
+  <aside class="drawer" id="toc" hidden role="dialog" aria-modal="true" aria-label="目录" tabindex="-1">
+    <div class="drawer__head">
+      <div>
+        <h2>目录</h2>
+        <p>已读过的小节可以直接跳回</p>
+      </div>
+      <button class="drawer__close" id="tocClose" type="button">关闭 ✕</button>
+    </div>
+    <div class="drawer__body" id="tocBody"></div>
+  </aside>
+
+  <!-- 开场 -->
+  <div class="scr" id="startScreen">
+    <svg class="scr__sigil" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--accent)">
+        <circle cx="100" cy="100" r="86" opacity=".35"/>
+        <circle cx="100" cy="100" r="72" opacity=".2"/>
+        <path d="M100 22 L123 78 L183 78 L134 113 L153 170 L100 135 L47 170 L66 113 L17 78 L77 78 Z"/>
+      </g>
+      <g style="color:var(--brass)">
+        <ellipse cx="100" cy="100" rx="26" ry="14" fill="none" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="100" cy="100" r="6" fill="currentColor" opacity=".85"/>
+        <path d="M74 100 Q100 78 126 100 Q100 122 74 100 Z" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+      </g>
+    </svg>
+    <div>
+      <h1>米斯卡托尼克讲义</h1>
+      <p class="scr__sub">A Lecture on the Cthulhu Mythos</p>
+    </div>
+    <p class="scr__lede">
+      克苏鲁神话不是一本书，也不是一个作者的世界。它是一群作者从二十世纪初延续至今、互相引用和共同扩展的虚构宇宙。下面九节，我们从它的作者开始，讲到它的神谱、它的物种、它的地图、它那本不存在的书，以及它如何变成了今天的游戏、电影和表情包。
+      <br><br>
+      阅读会消耗右上角的理智。想知道得更多，就掉得更快。
+    </p>
+    <div class="scr__acts">
+      <button class="act" id="btnStart" type="button">进入档案室</button>
+      <button class="act act--ghost" id="btnResume" type="button" hidden>继续上次阅读</button>
+    </div>
+    <p class="scr__note">底本：洛夫克拉夫特及同时代作者的作品，与后来的研究资料。档案区附有阅读来源；原著、后人体系与游戏规则分别标注，不同作者的版本可能冲突。</p>
+  </div>
+
+  <!-- 终章 -->
+  <div class="scr" id="endScreen" hidden>
+    <span class="card__no">终章 · 你的理智</span>
+    <h1 id="endTitle">合上卷宗</h1>
+    <p class="scr__lede" id="endText"></p>
+    <dl class="record">
+      <div><dt>解锁档案</dt><dd id="endCodex">0</dd></div>
+      <div><dt>剩余理智</dt><dd id="endSan">100</dd></div>
+      <div><dt>阅读小节</dt><dd id="endCh">0</dd></div>
+    </dl>
+    <p class="scr__note" id="endNote">
+      洛夫克拉夫特 1937 年去世，后来许多作者继续扩展这套神话。共享创作不等于所有作品都能任意复制；你刚读完的讲义，也只是其中一个版本。阅读记录已保存在这个浏览器中。
+    </p>
+    <div class="scr__acts">
+      <button class="act" id="btnAgain" type="button">从头再读一遍</button>
+      <button class="act act--ghost" id="btnCodexEnd" type="button">翻看档案</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ═══ 档案条目 ══════════════════════════════════════════
+     tag: 洛氏原著 / 同时代共创 / 德雷斯体系 / 后世分类 / 后人扩展 / 流行文化
+  ═══════════════════════════════════════════════════════ */
+  var CODEX = [
+    /* 作品 —— 新手最想知道的是先读哪一篇，所以放在最前面 */
+    { id:"call-of-cthulhu", cat:"作品", name:"《克苏鲁的呼唤》", en:"The Call of Cthulhu", tag:"洛氏原著",
+      body:"1928 年首刊。调查记录把艺术家的梦、警方发现的教团，以及约翰森的海上手稿联系起来。开篇的“无知之海”与教团流传的古老对句都出自本文；对句不在小说结尾。<b>它是认识神话核心主题的一篇入门作品。</b>" },
+    { id:"colour", cat:"作品", name:"《星之彩》", en:"The Colour Out of Space", tag:"洛氏原著",
+      body:"1927 年首刊。一颗陨石落在农场，带来一种难以归入已知光谱的颜色。土地、动物与一家人渐渐衰败。故事主要通过农场的变化制造恐怖，并不依赖一份完整的神谱。" },
+    { id:"mountains", cat:"作品", name:"《疯狂山脉》", en:"At the Mountains of Madness", tag:"洛氏原著",
+      body:"1936 年首刊，洛夫克拉夫特较长的中篇之一。1930 年出发的南极探险队，在 1931 年发现古老者的遗骸与城市。地质、生物与壁画调查一步步揭开地球的陌生历史。<b>科学探索成为恐惧的入口。</b>" },
+    { id:"innsmouth-work", cat:"作品", name:"《印斯茅斯的阴霾》", en:"The Shadow over Innsmouth", tag:"洛氏原著",
+      body:"1936 年单行本出版。调查者在沿海小镇遭到追捕，后来从家族历史中发现自己与深潜者的联系。结尾从逃离小镇转向接受另一种身份；不能据此说它是唯一有这种转折的神话故事。" },
+    { id:"dunwich-work", cat:"作品", name:"《敦威治恐怖事件》", en:"The Dunwich Horror", tag:"洛氏原著",
+      body:"1929 年首刊。犹格·索托斯的子嗣与沃特雷家将乡村卷入灾害。<b>“犹格·索托斯知晓门”</b>的著名禁书引文来自这里；结尾也明确写出阿米蒂奇等人消灭怪物。" },
+    { id:"whisperer", cat:"作品", name:"《暗夜呢喃》", en:"The Whisperer in Darkness", tag:"洛氏原著",
+      body:"1931 年首刊。故事以回忆、通信和调查逐步展开，联系米·戈、佛蒙特州洪水与山区传闻。朋友的信件逐渐让叙述者失去把握，最终一次拜访使先前的线索有了可怕的新含义。" },
+    { id:"shadow-out-of-time", cat:"作品", name:"《超越时间之影》", en:"The Shadow Out of Time", tag:"洛氏原著",
+      body:"写于 1934–1935 年，1936 年首刊。叙述者有数年的记忆空白，身体曾被来自遥远过去的意识占据。跨越时代的记忆与遗迹让人类的历史失去原来的尺度。" },
+    { id:"dreamquest", cat:"作品", name:"《梦寻秘境卡达斯》", en:"The Dream-Quest of Unknown Kadath", tag:"洛氏原著",
+      body:"写于 1926–1927 年，1943 年出版。伦道夫·卡特穿越梦境世界，寻找在梦中看见的夕阳城市。旅途连接乌撒、塞勒菲斯、卡达斯与奈亚拉托提普等存在，兼有奇幻与宇宙恐怖的气质。" },
+
+    /* 人物 */
+    { id:"lovecraft", cat:"人物", name:"H.P. 洛夫克拉夫特", en:"H. P. Lovecraft", tag:"洛氏原著",
+      body:"1890 年生于普罗维登斯，1937 年因肠癌逝世。生前作品主要散见于杂志，1936 年《印斯茅斯的阴霾》曾以单行本出版。他做过大量改稿和代笔，晚年收入有限。一生写过数以万计的信，但确数只能估计，写作总量不能等同于存世数量。“克苏鲁神话”这一名称由德雷斯在其身后推广。" },
+    { id:"derleth", cat:"人物", name:"奥古斯特·德雷斯", en:"August Derleth", tag:"德雷斯体系",
+      body:"1909–1971，洛夫克拉夫特的通信友人、Arkham House 联合创办人，参与其身后作品的保存与出版。他推广“克苏鲁神话”的名称，加入<b>元素分类与正邪对抗</b>的框架。这些整理对后世影响很大，但不能全部回写成洛夫克拉夫特的原设定。" },
+    { id:"cas", cat:"人物", name:"克拉克·阿什顿·史密斯", en:"Clark Ashton Smith", tag:"同时代共创",
+      body:"诗人兼雕塑家，与洛夫克拉夫特互相引用彼此创造的名字。贡献了撒托古亚、乌波·萨斯拉，以及《伊波恩之书》。他的海伯波利亚故事更偏衰败的奇幻，而不是新英格兰的恐怖。" },
+    { id:"reh", cat:"人物", name:"罗伯特·E·霍华德", en:"Robert E. Howard", tag:"同时代共创",
+      body:"《蛮王柯南》的作者，洛夫克拉夫特的笔友。双方交流创作，并借用彼此的神名与禁书。<b>《死灵之书》已出现在洛夫克拉夫特 1922 年写成的《猎犬》中</b>；霍华德后来也引用了它。" },
+    { id:"fbl", cat:"人物", name:"弗兰克·贝尔纳普·朗", en:"Frank Belknap Long", tag:"同时代共创",
+      body:"洛夫克拉夫特的友人，《廷达洛斯猎犬》的作者。这篇 1929 年的小说将时间的“角度”化为危险，让追索禁忌知识的主题有了另一种形态。" },
+    { id:"chambers", cat:"人物", name:"罗伯特·W·钱伯斯", en:"Robert W. Chambers", tag:"后人扩展",
+      body:"1895 年出版短篇集《黄衣之王》，其中的同名禁忌剧本是虚构作品。洛夫克拉夫特后来在《暗夜呢喃》中引用哈斯塔、黄印与哈利湖等意象，其他作者再继续建立联系。这是<b>设定经由引用逐渐汇合</b>的例子。" },
+    { id:"sandy", cat:"人物", name:"桑迪·彼得森", en:"Sandy Petersen", tag:"流行文化",
+      body:"1981 年为 Chaosium 设计桌面角色扮演游戏《克苏鲁的呼唤》。它把<b>理智变成角色数值和检定规则</b>，使宇宙恐怖成为玩家可以体验的机制。SAN 属于后来的游戏规则，不能当作洛夫克拉夫特小说中的角色属性。" },
+
+    { id:"carter", cat:"人物", name:"伦道夫·卡特", en:"Randolph Carter", tag:"洛氏原著",
+      body:"洛夫克拉夫特笔下反复出现的梦境探索者，见于《伦道夫·卡特的陈述》《银钥匙》《未知卡达斯梦寻》《穿越银匙之门》等作品。各篇叙述方式不同，不能简单把他等同于作者本人，或把这些故事当作事先规划好的连续传记。" },
+
+    /* 神祇 */
+    { id:"azathoth", cat:"神祇", name:"阿撒托斯", en:"Azathoth", tag:"洛氏原著",
+      body:"洛氏笔下的混沌中心与“魔神之首”，伴着鼓声、笛声和其他神祇的舞蹈。《未知卡达斯梦寻》将它置于时间之外。<b>“宇宙只是它做的梦”是流行扩展，不能当作洛氏原文设定。</b>1922 年的同名残篇是相关早期创作，但正文并未点出它的名字。" },
+    { id:"yog", cat:"神祇", name:"犹格·索托斯", en:"Yog-Sothoth", tag:"洛氏原著",
+      body:"“门之钥”。它是时间与空间的总和，因此<b>同时存在于一切时刻与一切地点</b>。它知道所有事，因为它就是所有事发生的容器。在《敦威治恐怖事件》里，它与人类女性生下了一对双胞胎。" },
+    { id:"shub", cat:"神祇", name:"莎布·尼古拉丝", en:"Shub-Niggurath", tag:"洛氏原著",
+      body:"“森之黑山羊，孕育万千子孙者”的祷词见于《暗夜呢喃》，《敦威治恐怖事件》也呼祷过其名字。它与繁衍意象相关，但原著描写有限，不能由此断言它没有意志，或把所有后世形象当作洛氏原设定。" },
+    { id:"nyarlathotep", cat:"神祇", name:"奈亚拉托提普", en:"Nyarlathotep", tag:"洛氏原著",
+      body:"“伏行之混沌”。1920 年的同名短篇中，它是来到人间展示奇异事物的神秘人物；《未知卡达斯梦寻》称它为其他神祇的灵魂与信使。它常以<b>主动交涉、欺骗与引诱</b>的形象出现，但不宜把后世全部化身归为洛氏原著。" },
+    { id:"cthulhu", cat:"神祇", name:"克苏鲁", en:"Cthulhu", tag:"洛氏原著",
+      body:"沉睡在南太平洋拉莱耶的存在，既受到崇拜，也被原文称为祭司。形象是章鱼状的头、蝙蝠般的翅、臃肿的人形身躯。洛夫克拉夫特在信中给过接近 <b>“Khlûl'-hloo”</b> 的拟音，同时强调它不是人类声道能准确发出的名字。1928 年《克苏鲁的呼唤》使它正式登场；原著没有一张按强弱排好的神谱。" },
+    { id:"hastur", cat:"神祇", name:"哈斯塔", en:"Hastur", tag:"后人扩展",
+      body:"名称出自安布罗斯·比尔斯的《牧羊人海塔》，钱伯斯在 1895 年《黄衣之王》中借用，洛夫克拉夫特又在《暗夜呢喃》中含糊地提及。后来的德雷斯等作者将它进一步神格化，并建立与黄衣之王、毕宿五的联系。<b>这些文本中的哈斯塔不能简单视作同一套固定设定。</b>" },
+    { id:"cthugha", cat:"神祇", name:"克塔格亚", en:"Cthugha", tag:"德雷斯体系",
+      body:"德雷斯创造的火焰存在，在其元素框架中与火相联系。它属于后来的神话扩展，不能当作洛夫克拉夫特的原著角色，也不能笼统称为固定的“克苏鲁宿敌”。" },
+    { id:"tsathoggua", cat:"神祇", name:"撒托古亚", en:"Tsathoggua", tag:"同时代共创",
+      body:"克拉克·阿什顿·史密斯创造的蟾蜍状神格，住在地下的黑色洞穴里。它的形象带着懒惰与贪食，常出现在海伯波利亚故事中，随后也被洛夫克拉夫特等人引用。" },
+    { id:"nodens", cat:"神祇", name:"诺登斯", en:"Nodens", tag:"洛氏原著",
+      body:"名字借自凯尔特神话，出现在洛夫克拉夫特的《雾中怪屋》和《未知卡达斯梦寻》中。它在后者中是夜魇的主人，并<b>帮助卡特逃离奈亚拉托提普的追逐</b>。这不等于洛氏所有作品都服从统一的善恶阵营。" },
+
+    /* 存在 */
+    { id:"deepones", cat:"存在", name:"深潜者", en:"Deep Ones", tag:"洛氏原著",
+      body:"鱼蛙状的沿海种族，崇拜达贡与海德拉。《印斯茅斯的阴霾》写到它们与人类通婚，混血后代随着年龄增长发生形态变化，最终进入海中。故事也通过家族历史揭开叙述者自己的身份。作品于 1936 年以单行本出版。" },
+    { id:"migo", cat:"存在", name:"米·戈", en:"Mi-go", tag:"洛氏原著",
+      body:"“犹格斯真菌”。粉红色的蟹状生物，长着蝙蝠翅膀，能在真空中飞行。它们把人类的大脑取出来装进金属圆筒，<b>人还是活的</b>，可以跟着圆筒一起去星际旅行。出处：《暗夜呢喃》（1931），发生在佛蒙特州的山里。" },
+    { id:"elderthings", cat:"存在", name:"古老者", en:"Elder Things", tag:"洛氏原著",
+      body:"南极冰层下的桶状文明：五条脊、翅与触手，能在水中和陆上活动。《疯狂山脉》中的探险队于 1930 年出发，1931 年 1 月发现其遗骸。故事暗示它们参与塑造地球早期生命，也造出了修格斯作为劳力。作品首刊于 1936 年。" },
+    { id:"shoggoth", cat:"存在", name:"修格斯", en:"Shoggoth", tag:"洛氏原著",
+      body:"古老者创造的劳力，黑色原生质，能长出需要的器官，包括众多眼睛。《疯狂山脉》写它们模仿主人的声音喊出“Tekeli-li!”，也描述过它们的反叛与古老者文明的衰落；文明的历史不能压缩成单一原因。" },
+    { id:"yith", cat:"存在", name:"伊斯之伟大种族", en:"Great Race of Yith", tag:"洛氏原著",
+      body:"伟大种族以<b>跨越时间的意识交换</b>研究其他种族。锥形身体是它们迁移后占据的躯体；为避灾，它们将整体迁入人类灭亡之后的甲虫形种族，后来再迁往水星的植物形生物。出处：《超越时间之影》，写于 1934–1935 年，1936 年首刊。" },
+    { id:"hounds", cat:"存在", name:"廷达洛斯猎犬", en:"Hounds of Tindalos", tag:"同时代共创",
+      body:"住在时间“角度”里的存在，能经由角进入我们的连续体；故事中的角色试图用弧形表面隔绝它们。这是弗兰克·贝尔纳普·朗 1929 年同名小说的创作，<b>不是洛夫克拉夫特本人笔下的种族</b>。" },
+    { id:"ghouls", cat:"存在", name:"食尸鬼", en:"Ghouls", tag:"洛氏原著",
+      body:"常栖居地下，以尸体为食。《皮克曼的模特》暗示人类与它们之间的转化联系；《未知卡达斯梦寻》中，也有帮助卡特的食尸鬼。原著没有“它们正在统一取代人类”的固定历史。" },
+
+    /* 地点 */
+    { id:"rlyeh", cat:"地点", name:"拉莱耶", en:"R'lyeh", tag:"洛氏原著",
+      body:"南太平洋的沉没之城，克苏鲁的居所。原文给出坐标：<b>南纬 47°9′、西经 126°43′</b>。1925 年 3 月 1 日的地震后它浮出海面，船员于 3 月 23 日登岛。城里的几何让人无法用熟悉的空间关系理解。" },
+    { id:"arkham", cat:"地点", name:"阿卡姆", en:"Arkham", tag:"洛氏原著",
+      body:"马萨诸塞州的虚构城市，也是多篇故事共同使用的舞台。米斯卡托尼克大学位于这里，图书馆保存着可疑的禁书。熟悉的街道、档案与学校，让无法理解的事物像日常生活的一部分。" },
+    { id:"innsmouth", cat:"地点", name:"印斯茅斯", en:"Innsmouth", tag:"洛氏原著",
+      body:"衰败的渔业小镇，深潜者的陆上据点。<b>1927–1928 年冬</b>，联邦政府调查并突袭这里，逮捕居民，焚毁与炸毁沿海的破败空屋。报纸还提到潜艇向魔鬼礁外的深海发射鱼雷；行动详情受到严密保密。出处：《印斯茅斯的阴霾》。" },
+    { id:"dunwich", cat:"地点", name:"敦威治", en:"Dunwich", tag:"洛氏原著",
+      body:"马萨诸塞州内陆的贫困村落。1928 年，沃特雷家的秘密引发灾害：游荡的隐形巨物是威尔伯的双胞胎兄弟、犹格·索托斯的子嗣，最后被阿米蒂奇等人用咒语消灭。<b>不是犹格·索托斯本体现身。</b>出处：《敦威治恐怖事件》。" },
+    { id:"miskatonic", cat:"地点", name:"米斯卡托尼克大学", en:"Miskatonic University", tag:"洛氏原著",
+      body:"位于虚构阿卡姆的大学。其图书馆藏有《死灵之书》的拉丁文版本，还资助过《疯狂山脉》中的南极探险队。大学、馆藏与学术调查在多篇故事中反复出现，让虚构世界获得制度与历史的重量。" },
+    { id:"kingsport", cat:"地点", name:"金斯波特", en:"Kingsport", tag:"洛氏原著",
+      body:"洛夫克拉夫特笔下的虚构海滨小镇，是《雾中怪屋》《魔宴》等作品的舞台。海雾、陡崖与古老屋舍让日常地理渐渐滑向陌生世界；不同故事中的恐怖并不只有触手。" },
+    { id:"dreamlands", cat:"地点", name:"幻梦境", en:"The Dreamlands", tag:"洛氏原著",
+      body:"《未知卡达斯梦寻》《银钥匙》等作品中的梦境世界，有乌撒、塞勒菲斯、卡达斯等城市。卡特通过睡眠进入其中；这一支带有邓萨尼式奇幻色彩，也与奈亚拉托提普等共享人物相接。" },
+
+    /* 典籍 */
+    { id:"necronomicon", cat:"典籍", name:"《死灵之书》", en:"Necronomicon", tag:"洛氏原著",
+      body:"洛夫克拉夫特虚构的禁书。其《死灵之书历史》称阿尔哈兹莱德约 730 年在大马士革写成 Al Azif；azif 被解释为<b>夜间虫鸣，被人视作妖魔嚎叫</b>。文本编造了希腊文、拉丁文译本与大英博物馆、巴黎、哈佛、阿卡姆、布宜诺斯艾利斯的馆藏。以上是小说设定，不是真实古书的历史。" },
+    { id:"alhazred", cat:"典籍", name:"阿卜杜尔·阿尔哈兹莱德", en:"Abdul Alhazred", tag:"洛氏原著",
+      body:"《死灵之书》的虚构作者，被称为“疯狂的阿拉伯人”。传说他死在公元 738 年的大马士革街头，被一个看不见的东西当众撕碎。<b>洛夫克拉夫特造出他，只是为了让那本书看起来有出处。</b>" },
+    { id:"kinginyellow", cat:"典籍", name:"《黄衣之王》", en:"The King in Yellow", tag:"后人扩展",
+      body:"钱伯斯 1895 年小说集中的虚构剧本，读到第二幕的角色会经历可怕的精神冲击。它比《克苏鲁的呼唤》更早，黄印、哈斯塔等意象经引用进入后来的神话创作；这不是洛夫克拉夫特写出的真实剧本。" },
+    { id:"eibon", cat:"典籍", name:"《伊波恩之书》", en:"Book of Eibon", tag:"同时代共创",
+      body:"克拉克·阿什顿·史密斯创造的虚构典籍，归于海伯波利亚巫师伊波恩。它在《乌波·萨斯拉》等故事中作为禁忌知识的来源；与《敦威治恐怖事件》中的“伊本·加兹之粉”<b>并非同一事物</b>。" },
+    { id:"rlyehtext", cat:"典籍", name:"《拉莱耶文本》", en:"R'lyeh Text", tag:"德雷斯体系",
+      body:"德雷斯《哈斯塔归来》已使用这部虚构典籍：故事中手稿来自亚洲内地，与克苏鲁、拉莱耶及哈斯塔相联系。后来的作品另有扩写，不能把某一版本的作者、语言或年代当成统一的原著设定。" },
+
+    /* 概念 */
+    { id:"cosmicism", cat:"概念", name:"宇宙恐怖", en:"Cosmicism / Cosmic Horror", tag:"洛氏原著",
+      body:"这个体系真正的内核。传统恐怖里，怪物是世界的例外，杀掉它秩序就恢复；洛夫克拉夫特反过来写：<b>例外才是常态，人类才是那个短暂的意外</b>。宇宙不恨你，它只是没注意到你。恐惧不来自被吃掉，而来自“知道了自己有多小”。" },
+    { id:"unnamable", cat:"概念", name:"不可名状", en:"Unnamable", tag:"洛氏原著",
+      body:"洛氏常以无法充分理解的形态与目击者反应制造恐惧，但也写过细致的生物与城市描述。<b>不可名状是一种叙事效果</b>，不是绝不描绘怪物的硬规则。" },
+    { id:"knowledge", cat:"概念", name:"知识即毁灭", en:"Knowledge as Ruin", tag:"洛氏原著",
+      body:"调查往往让人物承受巨大代价，胜利也未必带来安心。但《敦威治恐怖事件》仍有消灭怪物的结局，不能把“活下来却疯了”当作所有故事的固定公式。<b>知识的代价</b>是一条重要主题，而不是每篇作品都照抄的规则。" },
+    { id:"outergods", cat:"概念", name:"外神与旧日支配者", en:"Outer Gods & Great Old Ones", tag:"后世分类",
+      body:"后来的小说与游戏常用<b>外神与旧日支配者</b>来分类，不同作者的用法并不一致。德雷斯特别加入元素与正邪对抗框架，但现代两层分类不能简单视作他一人定稿。洛夫克拉夫特本人没有留下统一神谱。" },
+    { id:"shared", cat:"概念", name:"共享世界", en:"Shared Universe", tag:"后人扩展",
+      body:"神话能长大，靠的是<b>彼此借用名字、互相引用作品</b>的创作传统。虚构的神祇与图书馆在多个故事中反复出现，逐渐获得历史感。这种共同创作不等于每一部后来作品都放弃了版权。" },
+    { id:"san", cat:"概念", name:"SAN 值与理智", en:"Sanity", tag:"流行文化",
+      body:"1981 年由《克苏鲁的呼唤》桌面角色扮演游戏推广开来的属性。规则简单：见到不该见的东西，掷骰，掉理智；掉到零，角色退出游戏。它把“知识即毁灭”变成了一个可玩、可传染的数字。你右上角那个读数，就是它的通俗版本。" },
+    { id:"influence", cat:"概念", name:"文化影响", en:"Legacy", tag:"流行文化",
+      body:"这套神话与宇宙恐怖视角不断进入桌面角色扮演、电子游戏、电影、音乐与漫画。生前名气与收入有限的作者，如今留下跨越媒介的影响；流行文化中的“克苏鲁”有时也泛指古老、庞大、难以沟通的恐怖存在。" },
+    { id:"couplet", cat:"概念", name:"那两句对句", en:"That is not dead which can eternal lie", tag:"洛氏原著",
+      body:"“那并非死者，能永恒躺卧；奇异的万古之后，连死亡也会死去。”这是一组著名对句，在故事里托名阿尔哈兹莱德。它已出现在 1921 年的《无名之城》，后来又见于《克苏鲁的呼唤》。其意象让死亡与漫长时间的界线变得不可靠。" },
+    { id:"eldersign", cat:"概念", name:"古神之印", en:"Elder Sign", tag:"德雷斯体系",
+      body:"洛夫克拉夫特在故事中提到 Elder Sign，并在 1930 年致克拉克·阿什顿·史密斯的一封信里画过树枝形的印记。<b>五角星中眼睛的形象属于后来的演绎</b>，不能当作原著统一图样。开场页使用的是受这种后世形象启发的装饰图案。" },
+    { id:"racism", cat:"概念", name:"种族主义与“外来者”", en:"Xenophobia", tag:"洛氏原著",
+      body:"洛夫克拉夫特的文字中存在明确的种族偏见与排外情绪。《红钩的恐怖》对移民街区的描述就是一个直接例子。理解作品的历史语境，也需要正视这些局限；不能把偏见合理化为不可批评的“时代特色”。" },
+    { id:"eastasia", cat:"概念", name:"东亚的接受", en:"In East Asia", tag:"流行文化",
+      body:"翻译、桌面角色扮演与网络跑团扩大了宇宙恐怖在东亚的传播。在不同社群中，克苏鲁可能指原著、游戏规则或更宽泛的恐怖意象。具体传播年代和路径需要分别考察，不能把日本与中文圈的接受概括成单一链条。" }
+  ];
+  var CODEX_MAP = {};
+  CODEX.forEach(function (e) { CODEX_MAP[e.id] = e; });
+  var REFERENCES = {
+  "cc": [
+    "《克苏鲁的呼唤》",
+    "https://www.hplovecraft.com/writings/texts/fiction/cc.aspx"
+  ],
+  "coos": [
+    "《星之彩》",
+    "https://www.hplovecraft.com/writings/texts/fiction/coos.aspx"
+  ],
+  "mm": [
+    "《疯狂山脉》",
+    "https://www.hplovecraft.com/writings/texts/fiction/mm.aspx"
+  ],
+  "soi": [
+    "《印斯茅斯的阴霾》",
+    "https://www.hplovecraft.com/writings/texts/fiction/soi.aspx"
+  ],
+  "dh": [
+    "《敦威治恐怖事件》",
+    "https://www.hplovecraft.com/writings/texts/fiction/dh.aspx"
+  ],
+  "wid": [
+    "《暗夜呢喃》",
+    "https://www.hplovecraft.com/writings/texts/fiction/wid.aspx"
+  ],
+  "sot": [
+    "《超越时间之影》",
+    "https://www.hplovecraft.com/writings/texts/fiction/sot.aspx"
+  ],
+  "dq": [
+    "《未知卡达斯梦寻》",
+    "https://www.hplovecraft.com/writings/texts/fiction/dq.aspx"
+  ],
+  "h": [
+    "《猎犬》",
+    "https://www.hplovecraft.com/writings/texts/fiction/h.aspx"
+  ],
+  "hn": [
+    "《死灵之书历史》",
+    "https://www.hplovecraft.com/writings/texts/fiction/hn.aspx"
+  ],
+  "shh": [
+    "《雾中怪屋》",
+    "https://www.hplovecraft.com/writings/texts/fiction/shh.aspx"
+  ],
+  "pm": [
+    "《皮克曼的模特》",
+    "https://www.hplovecraft.com/writings/texts/fiction/pm.aspx"
+  ],
+  "nc": [
+    "《无名之城》",
+    "https://www.hplovecraft.com/writings/texts/fiction/nc.aspx"
+  ],
+  "rh": [
+    "《红钩的恐怖》",
+    "https://www.hplovecraft.com/writings/texts/fiction/rh.aspx"
+  ],
+  "life": [
+    "洛夫克拉夫特传略",
+    "https://www.hplovecraft.com/life/biograph.aspx"
+  ],
+  "letters": [
+    "书信目录与存世数量",
+    "https://www.hplovecraft.com/writings/letters/"
+  ],
+  "kiy": [
+    "钱伯斯《黄衣之王》",
+    "https://www.gutenberg.org/ebooks/8492"
+  ],
+  "eibon": [
+    "史密斯《乌波·萨斯拉》",
+    "https://cthulhufiles.com/stories/smith/smith-ubbo-sathla.html"
+  ],
+  "coc": [
+    "Chaosium：《克苏鲁的呼唤》",
+    "https://www.chaosium.com/call-of-cthulhu-rpg/"
+  ],
+  "fiction": [
+    "作品创作与首刊目录",
+    "https://www.hplovecraft.com/writings/fiction/"
+  ],
+  "notes": [
+    "本页考据记录",
+    "sources.html"
+  ]
+};
+  var ENTRY_SOURCES = {
+  "call-of-cthulhu": [
+    "cc",
+    "fiction"
+  ],
+  "colour": [
+    "coos",
+    "fiction"
+  ],
+  "mountains": [
+    "mm",
+    "fiction"
+  ],
+  "innsmouth-work": [
+    "soi",
+    "fiction"
+  ],
+  "dunwich-work": [
+    "dh",
+    "fiction"
+  ],
+  "whisperer": [
+    "wid",
+    "fiction"
+  ],
+  "shadow-out-of-time": [
+    "sot",
+    "fiction"
+  ],
+  "dreamquest": [
+    "dq",
+    "fiction"
+  ],
+  "lovecraft": [
+    "life",
+    "letters"
+  ],
+  "derleth": [
+    "notes"
+  ],
+  "cas": [
+    "eibon"
+  ],
+  "reh": [
+    "h"
+  ],
+  "fbl": [
+    "notes"
+  ],
+  "chambers": [
+    "kiy",
+    "wid"
+  ],
+  "sandy": [
+    "coc"
+  ],
+  "carter": [
+    "dq",
+    "fiction"
+  ],
+  "azathoth": [
+    "dq"
+  ],
+  "yog": [
+    "dh"
+  ],
+  "shub": [
+    "wid"
+  ],
+  "nyarlathotep": [
+    "dq"
+  ],
+  "cthulhu": [
+    "cc"
+  ],
+  "hastur": [
+    "kiy",
+    "wid"
+  ],
+  "cthugha": [
+    "notes"
+  ],
+  "tsathoggua": [
+    "eibon"
+  ],
+  "nodens": [
+    "shh",
+    "dq"
+  ],
+  "deepones": [
+    "soi"
+  ],
+  "migo": [
+    "wid"
+  ],
+  "elderthings": [
+    "mm"
+  ],
+  "shoggoth": [
+    "mm"
+  ],
+  "yith": [
+    "sot"
+  ],
+  "hounds": [
+    "notes"
+  ],
+  "ghouls": [
+    "pm",
+    "dq"
+  ],
+  "rlyeh": [
+    "cc"
+  ],
+  "arkham": [
+    "dh"
+  ],
+  "innsmouth": [
+    "soi"
+  ],
+  "dunwich": [
+    "dh"
+  ],
+  "miskatonic": [
+    "mm",
+    "hn"
+  ],
+  "kingsport": [
+    "shh"
+  ],
+  "dreamlands": [
+    "dq"
+  ],
+  "necronomicon": [
+    "hn",
+    "h"
+  ],
+  "alhazred": [
+    "hn",
+    "nc"
+  ],
+  "kinginyellow": [
+    "kiy"
+  ],
+  "eibon": [
+    "eibon",
+    "dh"
+  ],
+  "rlyehtext": [
+    "notes"
+  ],
+  "cosmicism": [
+    "cc"
+  ],
+  "unnamable": [
+    "mm"
+  ],
+  "knowledge": [
+    "dh",
+    "cc"
+  ],
+  "outergods": [
+    "notes"
+  ],
+  "shared": [
+    "notes"
+  ],
+  "san": [
+    "coc"
+  ],
+  "influence": [
+    "coc"
+  ],
+  "couplet": [
+    "nc",
+    "cc"
+  ],
+  "eldersign": [
+    "notes"
+  ],
+  "racism": [
+    "rh"
+  ],
+  "eastasia": [
+    "notes"
+  ]
+};
+  var CAT_ORDER = ["作品", "人物", "神祇", "存在", "地点", "典籍", "概念"];
+
+  /* ═══ 章节脚本 ══════════════════════════════════════════ */
+  var CH = [
+    { no:"序章", title:"档案室", en:"The Reading Room", scene:"archive", lines:[
+      { w:"旁白", t:"你走进一间不对外开放的档案室。顶灯闪了两下，没有灭。长桌上放着一份没有编号的卷宗，纸边发脆。" },
+      { w:"管理员", t:"你要看的东西在这儿。先说清楚，这不是一本鬼故事集。" },
+      { w:"管理员", t:"这是从二十世纪初延续至今的共同创作。作者们互相引用、彼此呼应，让虚构的阿卡姆像真正的历史一样有来历。" },
+      { w:"旁白", t:"他把卷宗推过来。右上角的仪表亮了一下：◈ <em>SAN 100</em>。" },
+      { w:"管理员", t:"这是理智读数。你不用管它，只要记得——它只会往下走。" },
+      { w:"管理员", t:"还有，右边那个「档案」按钮里是正经的年代、人名和书名。故事留在这里听，考据去那边查。", unlock:["cosmicism"] }
+    ], choices:[
+      { t:"「我爱听故事。从人讲起。」", hint:"顺叙进入 · SAN −2", san:-2, go:1 },
+      { t:"「我先翻档案，确认一下这些都是真的。」", hint:"提前解锁人物与地点条目 · SAN −7", san:-7, go:1, unlock:["lovecraft","arkham","innsmouth","rlyeh"] }
+    ]},
+
+    { no:"第一章", title:"一个人的宇宙", en:"A Providence Gentleman", scene:"city", lines:[
+      { w:"旁白", t:"霍华德·菲利普斯·洛夫克拉夫特。1890 年生于普罗维登斯，1937 年死于同一座城市。他在 1924 至 1926 年住过纽约，也多次游历东海岸和魁北克。" },
+      { w:"旁白", t:"他的作品主要发在《诡丽幻谭》这样的杂志上。1936 年，《印斯茅斯的阴霾》还出过单行本。但名气与收入有限，改稿和代笔是重要的谋生方式。", san:-1 },
+      { w:"旁白", t:"他的思想里有种族偏见与对社会变化的恐惧，阅读时也需要正视这些局限。他一生写过数以万计的信，但确数只能估计，存世数量少得多。" },
+      { w:"旁白", t:"但他写出了此前没有人系统写过的一种恐惧。" },
+      { w:"洛夫克拉夫特", t:"「世上最仁慈的事，莫过于人类心智无法贯通一切。我们住在无知之海中一座平静的无名岛上，但这并不意味着我们该航行到更远的地方去。」" },
+      { w:"旁白", t:"这句话出自《克苏鲁的呼唤》的开篇，1928 年。<em>它差不多是整个体系的宣言。</em>", san:-2, unlock:["lovecraft","call-of-cthulhu","racism","couplet"] },
+      { w:"管理员", t:"注意这句话的位置：它不是结尾，是开头。故事还没开始，作者就先把人类的处境交代完了。" }
+    ]},
+
+    { no:"第二章", title:"他的敌人不是怪物", en:"The Unnameable", scene:"cosmos", lines:[
+      { w:"旁白", t:"传统恐怖故事的公式是：怪物出现，人被吃掉。世界秩序不变，只是出了个例外。" },
+      { w:"旁白", t:"洛夫克拉夫特写了另一种东西。怪物出现，然后你发现——<em>例外才是常态</em>。人类才是那个例外，而且是暂时的。" },
+      { w:"管理员", t:"后来的研究常用 cosmicism，宇宙冷漠主义，来概括这种视角。宇宙不恨你，它只是没注意到你。这比“魔鬼要抓你下地狱”更难接受。" },
+      { w:"旁白", t:"所以这个体系里最恐怖的角色，从来不是克苏鲁本人。" },
+      { w:"旁白", t:"《克苏鲁的呼唤》里，水手布里登逃回船后精神崩溃，约翰森则把经历留在手稿里。有人活着回来了，但他们的世界已经变了。", san:-3 },
+      { w:"管理员", t:"知识在这里不是力量。知识是伤口。你后面会一直看到这个逻辑。" },
+      { w:"旁白", t:"他有时详细描写怪物，有时只让读者看到目击者无法承受的反应。“无法形容”是一种叙事效果，不是从来不描述的硬规则。", san:-1, unlock:["unnamable","knowledge","colour"] }
+    ]},
+
+    { no:"第三章", title:"神谱", en:"The Pantheon", scene:"abyss", lines:[
+      { w:"旁白", t:"先纠正一件事：<em>原著没有一张按强弱排好的神谱。</em>克苏鲁既受到崇拜，也被称为祭司，不能简单按后来游戏的等级表来理解。" },
+      { w:"管理员", t:"后来的小说与游戏常把它们分成外神和旧日支配者。但各家用法不完全一致，你看到的是一种整理方式，而不是原作者留下的统一名册。" },
+      { w:"旁白", t:"第一位是阿撒托斯，盲目痴愚的混沌中心，伴着鼓声、笛声与其他神祇的舞蹈。《未知卡达斯梦寻》把它放在时间之外。至于“宇宙只是它做的梦”，那是流行扩展，不能当作洛氏原文。", san:-2, unlock:["azathoth"] },
+      { w:"旁白", t:"然后是犹格·索托斯，门之钥。它是时间与空间的总和，因此它同时存在于所有时刻——它知道一切，因为它就是一切发生的地方。", san:-2, unlock:["yog"] },
+      { w:"旁白", t:"莎布·尼古拉丝，森之黑山羊，孕育万千子孙者。这个名字首先让人想到繁衍；但原著没有给出清楚完整的个体形象，留下了后人扩写的空间。", san:-1, unlock:["shub"] },
+      { w:"旁白", t:"奈亚拉托提普，伏行之混沌，其他神祇的灵魂与信使。它常以主动交涉、欺骗和引诱的形象出现。那种几乎像人的交流能力，反而让它更危险。", san:-3, unlock:["nyarlathotep"] },
+      { w:"旁白", t:"最后才是克苏鲁。沉睡在拉莱耶的伟大的梦者，旧日支配者当中的祭司。形象是章鱼的头、蝙蝠的翅、臃肿的人形。", san:-2, unlock:["cthulhu","shared"] },
+      { w:"管理员", t:"它的名字连原作者都念不准。洛夫克拉夫特在信里说大概接近 “Khlûl'-hloo”，并且认为人类的声道结构根本发不出这个音。" },
+      { w:"管理员", t:"还有一件事你要记住：现代神谱是后世作者与游戏逐步整理的。德雷斯尤其添加了元素与正邪框架，不能把所有版本都归到洛夫克拉夫特名下。", san:-1, unlock:["outergods","derleth"] }
+    ]},
+
+    { no:"第四章", title:"不只是神", en:"The Neighbours", scene:"sea", lines:[
+      { w:"旁白", t:"这个体系真正吓人的部分，往往不是神，是邻居。" },
+      { w:"旁白", t:"深潜者住在海边的镇子上。它们和人类通婚，一代一代换血。印斯茅斯的年轻人长着一张越来越对不上号的五官，然后在某个年纪悄悄游向海里。", san:-3, unlock:["deepones"] },
+      { w:"旁白", t:"米·戈住在佛蒙特州的山里。它们是真菌，会飞，能在矿井里把人的大脑取出来装进金属圆筒带走——<em>人还是活的</em>，可以跟着圆筒一起去星际旅行。", san:-3, unlock:["migo","whisperer"] },
+      { w:"旁白", t:"1930 年出发的南极探险队，在 1931 年 1 月发现了古老者：桶状的躯干，五条脊，翅和触手。故事暗示它们参与塑造地球早期生命。", san:-2, unlock:["elderthings","miskatonic","mountains"] },
+      { w:"旁白", t:"还有修格斯。古老者用细胞工程造出来的奴隶，黑色原生质，能随时长出需要的器官——包括眼睛。很多很多眼睛。它们会模仿主人的声音，喊出那句“Tekeli-li!”。", san:-4, unlock:["shoggoth"] },
+      { w:"旁白", t:"另有住在时间“角度”里的廷达洛斯猎犬，来自弗兰克·贝尔纳普·朗的小说；有地下的食尸鬼，也有靠意识交换穿越时间的伊斯之伟大种族。它们各有自己的故事。", san:-2, unlock:["hounds","ghouls","yith","shadow-out-of-time"] },
+      { w:"管理员", t:"这些存在的动机各不相同，不能只用人类熟悉的善恶去概括。你最害怕的，也许不是它们的敌意，而是它们根本不在意你的时间表。" }
+    ]},
+
+    { no:"第五章", title:"地名志", en:"A Map of New England", scene:"abyss", lines:[
+      { w:"旁白", t:"洛夫克拉夫特把新英格兰画成了一片正在暗下去的地图。在真实城市之间，他塞进了不存在的地方。" },
+      { w:"旁白", t:"阿卡姆，马萨诸塞州的虚构城市。有米斯卡托尼克大学，有保存禁书的图书馆。学校、街道与档案，让危险显得像现实世界里可以调查的一部分。", san:-1, unlock:["arkham","miskatonic"] },
+      { w:"旁白", t:"金斯波特，海雾不散。敦威治，内陆的贫困村落。1928 年，沃特雷家的隐形巨物在那里肆虐；它是犹格·索托斯的子嗣，而不是神祇本体。", san:-2, unlock:["kingsport","dunwich","dunwich-work"] },
+      { w:"旁白", t:"印斯茅斯，海边。1927 至 1928 年冬，联邦政府突袭了它，逮捕居民，焚毁与炸毁沿海空屋。报纸还提到潜艇向魔鬼礁外的深海发射鱼雷，行动详情受到严密保密。", san:-2, unlock:["innsmouth","innsmouth-work"] },
+      { w:"旁白", t:"而拉莱耶在更南边。原文给出坐标：南纬 47 度 9 分，西经 126 度 43 分。1925 年 3 月 1 日的地震后它浮出海面，船员在 3 月 23 日登岛。", san:-3, unlock:["rlyeh"] },
+      { w:"旁白", t:"登岛的船员发现，这座城里的角不是角。它们以不该存在的角度相交。一个水手说，他分不清自己是在看外面还是里面。", san:-4, fx:"shake" },
+      { w:"管理员", t:"你手上那份卷宗里还夹着一本影印的拉丁文残卷。要读，就得付代价；不读，我也能讲。" }
+    ], choices:[
+      { t:"「读。我付得起。」", hint:"提前解锁六条相关档案 · SAN −12", san:-12, go:6, unlock:["necronomicon","alhazred","eibon","rlyehtext","dreamlands","kinginyellow"] },
+      { t:"「不必了，我记笔记就够了。」", hint:"SAN −2", san:-2, go:6 }
+    ]},
+
+    { no:"第六章", title:"一本不存在的书", en:"The Book That Was Never Written", scene:"page", lines:[
+      { w:"旁白", t:"《死灵之书》，Necronomicon。洛夫克拉夫特虚构的出版史说，阿尔哈兹莱德约在公元 730 年于大马士革写成 Al Azif。这个名字被解释为夜间虫鸣，被人听作妖魔的嚎叫。", san:-1, unlock:["necronomicon","alhazred"] },
+      { w:"旁白", t:"那份虚构的出版史还说，1228 年有人把它译成拉丁文。大英博物馆、巴黎、哈佛、阿卡姆和布宜诺斯艾利斯都有馆藏。这些不是现实的馆藏记录。" },
+      { w:"旁白", t:"<em>这本古书是虚构的。</em>洛夫克拉夫特编造了它的译本与出版史，其他作者再在自己的故事里引用，让它看起来像真的有来历。", san:-2 },
+      { w:"管理员", t:"这是整个神话最漂亮的一手。他没有写一本可怕的书，他伪造了一条引用链，于是那本书自己长出了重量。" },
+      { w:"旁白", t:"《死灵之书》已出现在洛夫克拉夫特 1922 年写成的《猎犬》中，霍华德后来也引用了它。共享创作的精彩之处，在于这些名字如何在不同作者之间流动。", unlock:["shared","reh","cas","fbl"] },
+      { w:"旁白", t:"神话里的禁书也不止一本。还有史密斯的《伊波恩之书》，后人扩展的《拉莱耶文本》，以及钱伯斯 1895 年小说集内的虚构剧本《黄衣之王》——故事中的读者会因它而崩溃。", san:-2, unlock:["eibon","rlyehtext","kinginyellow"] },
+      { w:"旁白", t:"1977 年出版的“西蒙版”《死灵之书》，借用了书名和若干神名。它是后来的独立仪式文本，不是洛夫克拉夫特写出的古书。" },
+      { w:"管理员", t:"顺便说一句，那套幻梦境——乌撒、塞勒菲斯、卡达斯——是另一条支线。它跟克苏鲁这一支关系松散，更接近奇幻。", unlock:["dreamlands","dreamquest","carter"] }
+    ]},
+
+    { no:"第七章", title:"神话是怎么长大的", en:"How a Myth Grows", scene:"void", lines:[
+      { w:"旁白", t:"洛夫克拉夫特常在书信里以玩笑方式谈论这些虚构设定，也鼓励朋友彼此引用。后来读者把散落的联系读成了一个越来越大的世界。" },
+      { w:"旁白", t:"他去世时，留下许多小说、诗歌与信件，但没有一份把所有神祇排得整整齐齐的统一设定集。" },
+      { w:"旁白", t:"洛氏身后，德雷斯推广了“克苏鲁神话”的名称，参与保存出版作品，并为设定加入元素和正邪对抗框架。但诺登斯本来就在洛氏故事里，并非德雷斯新造的角色。", san:-1, unlock:["derleth","cthugha","nodens","tsathoggua","hastur"] },
+      { w:"旁白", t:"<em>后人的体系化改变了原作的重心。</em>洛氏作品强调人类位置的渺小，但并非从无救援、冲突或善意；比如诺登斯就帮助过卡特。", san:-2 },
+      { w:"旁白", t:"钱伯斯 1895 年的《黄衣之王》比《克苏鲁的呼唤》早三十三年。洛夫克拉夫特在《暗夜呢喃》中借用了哈斯塔、黄印与哈利湖等意象，后人再继续把它们连起来。", san:-1, unlock:["chambers","eldersign"] },
+      { w:"旁白", t:"再往后，林·卡特、布莱恩·拉姆利、拉姆齐·坎贝尔等作者继续扩展设定。宇宙恐怖的视角，也影响了更多作家、电影与漫画创作者。" },
+      { w:"管理员", t:"所以这是一种不断延续的共同创作传统。彼此借用设定，让世界变大；但共享创作不等于所有后来的作品都可以任意复制。" }
+    ]},
+
+    { no:"第八章", title:"从纸页到桌面", en:"From Page to Table", scene:"void", lines:[
+      { w:"旁白", t:"1981 年，混沌元素公司出了一款桌面角色扮演游戏，《克苏鲁的呼唤》。设计师桑迪·彼得森做了一件事：给玩家加了一个属性，叫理智值，缩写 SAN。", san:-1, unlock:["sandy"] },
+      { w:"旁白", t:"规则很简单。你见到不该见的东西，掷骰，掉理智。掉到零，你的角色就退出游戏了。" },
+      { w:"管理员", t:"SAN 是后来游戏中的规则标记，洛夫克拉夫特的小说没有这套角色数值。阅读原著时，别把掷骰检定当成角色知道的宇宙定律。" },
+      { w:"旁白", t:"但当你把“知识即毁灭”做成一个数字之后，它突然可玩了，也可以传染了。<em>你右上角那个读数，就是它。</em>", san:-2, unlock:["san"] },
+      { w:"旁白", t:"从那以后是桌游、电子游戏（《沉没之城》《血源诅咒》）、电影、金属乐、漫画，以及 T 恤印花。", unlock:["influence","eastasia"] },
+      { w:"旁白", t:"一个生前名气与收入有限的作者，如今留下跨越媒介的影响。“克苏鲁”这个词也常被用来泛指庞大、古老、无法沟通的东西，但流行用法不等于原作的每一个细节。", san:-1 }
+    ]}
+  ];
+
+  /* ═══ 状态 ══════════════════════════════════════════════ */
+  var SAVE_KEY = "miskatonic-lecture-v1";
+  function freshState() {
+    return { ch:0, li:0, san:100, unlocked:{}, visited:{}, applied:{}, choices:{}, typing:false, finished:false };
+  }
+  var state = freshState();
+
+  var $ = function (id) { return document.getElementById(id); };
+  var elStage = $("stage"), elCard = $("card"), elBox = $("box"), elWho = $("who"), elText = $("text");
+  var elHint = $("hint"), elChoices = $("choices"), elToasts = $("toast"), elScrim = $("scrim");
+  var elCodex = $("codex"), elCodexBody = $("codexBody"), elToc = $("toc"), elTocBody = $("tocBody");
+  var elChapNo = $("chapNo"), elChapTitle = $("chapTitle"), elSanFill = $("sanFill"), elSanNum = $("sanNum");
+  var elSanMeter = $("sanMeter"), elCodexCount = $("codexCount"), elCodexProg = $("codexProg");
+  var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reduce = motionQuery.matches;
+
+  /* ═══ 存档：版本 2，保留旧键以迁移原来的阅读记录 ═════════ */
+  function snapshot() {
+    return { version:2, ch:state.ch, li:state.li, san:state.san, unlocked:state.unlocked,
+      visited:state.visited, applied:state.applied, choices:state.choices, finished:state.finished };
+  }
+  function save() {
+    try { localStorage.setItem(SAVE_KEY, JSON.stringify(snapshot())); } catch (e) {}
+  }
+  function normalizeSave(d) {
+    if (!d || !Number.isInteger(d.ch) || d.ch < 0 || d.ch >= CH.length ||
+        !Number.isInteger(d.li) || d.li < 0 || d.li > CH[d.ch].lines.length ||
+        !Number.isFinite(d.san) || (d.version !== undefined && d.version !== 2)) return null;
+    var result = freshState();
+    result.version = 2;
+    result.ch = d.ch; result.li = d.li; result.san = Math.max(0, Math.min(100, d.san));
+    CODEX.forEach(function (e) { if (d.unlocked && d.unlocked[e.id]) result.unlocked[e.id] = 1; });
+    CH.forEach(function (c, ci) {
+      if (d.visited && d.visited[ci]) result.visited[ci] = 1;
+      c.lines.forEach(function (_, li) {
+        var key = ci + ":" + li;
+        // 旧存档没有效果记录：以前读过的行按已结算迁移，避免再次扣分。
+        if (d.version === 2 ? d.applied && d.applied[key] : ci < d.ch || ci === d.ch && li <= d.li) result.applied[key] = 1;
+      });
+      if (c.choices) {
+        var choice = d.choices && d.choices[ci];
+        if (Number.isInteger(choice) && choice >= 0 && choice < c.choices.length) result.choices[ci] = choice;
+        else if (d.version === undefined && ci < d.ch) result.choices[ci] = 0;
+      }
+    });
+    result.finished = d.finished === true && d.ch === CH.length - 1 && d.li === CH[d.ch].lines.length;
+    return result;
+  }
+  var pending = null;
+  function load() {
+    try { return normalizeSave(JSON.parse(localStorage.getItem(SAVE_KEY))); } catch (e) { return null; }
+  }
+  if (window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(snapshot);
+
+  /* ═══ 画布：程序化场景 ══════════════════════════════════
+     每个场景 = 一个色相 + 一种剪影画法，全部由 token 混色得出，
+     因此明暗两套主题共用同一份定义。
+  ═══════════════════════════════════════════════════════ */
+  var cv = elStage, cx = cv.getContext("2d");
+  var W = 0, H = 0, DPR = 1, P = null, t0 = performance.now();
+  var SCENES = {
+    archive: { hue:[70,140,124], mode:"shelves" },
+    city:    { hue:[96,132,150], mode:"skyline" },
+    cosmos:  { hue:[132,108,178], mode:"stars" },
+    abyss:   { hue:[52,150,130], mode:"blocks" },
+    sea:     { hue:[40,120,150], mode:"bubbles" },
+    page:    { hue:[176,146,86], mode:"page" },
+    void:    { hue:[110,110,120], mode:"dust" }
+  };
+  var cur = SCENES.archive, blend = 1, prevScene = SCENES.archive, sceneStarted = 0, frame = null;
+
+  function hx(h) { h = h.trim(); if (h.charAt(0) === "#") h = h.slice(1);
+    if (h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)]; }
+  function mix(a, b, t) { return [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t]; }
+  function rgba(c, a) { return "rgba(" + (c[0]|0) + "," + (c[1]|0) + "," + (c[2]|0) + "," + a + ")"; }
+  function readPalette() {
+    var cs = getComputedStyle(document.documentElement);
+    P = { bg: hx(cs.getPropertyValue("--bg")), deep: hx(cs.getPropertyValue("--bg-deep")),
+          fg: hx(cs.getPropertyValue("--fg")), accent: hx(cs.getPropertyValue("--accent")) };
+    if (reduce && W && H) render(performance.now());
+  }
+  function rnd(seed) { var x = Math.sin(seed * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+
+  var motes = [];
+  function seedMotes() {
+    motes.length = 0;
+    var n = Math.round(Math.min(150, (W * H) / 16000));
+    for (var i = 0; i < n; i++) motes.push({ x: rnd(i) * W, y: rnd(i + 91) * H, r: 0.4 + rnd(i + 7) * 1.7,
+      s: 0.06 + rnd(i + 31) * 0.3, a: 0.12 + rnd(i + 53) * 0.45, d: rnd(i + 77) });
+  }
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+    cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    seedMotes(); readPalette();
+  }
+
+  function backdrop(hue) {
+    var g = cx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, rgba(mix(P.bg, hue, 0.15), 1));
+    g.addColorStop(0.55, rgba(mix(P.bg, hue, 0.05), 1));
+    g.addColorStop(1, rgba(mix(P.bg, P.deep, 0.85), 1));
+    cx.fillStyle = g; cx.fillRect(0, 0, W, H);
+  }
+  function drawShelves(hue, t) {
+    var cols = Math.max(4, Math.round(W / 150)), x, i;
+    for (i = 0; i < cols; i++) {
+      x = (i + 0.5) * (W / cols);
+      var seed = rnd(i * 3.3), bw = W / cols * 0.72, bh = H * (0.42 + seed * 0.22);
+      cx.fillStyle = rgba(mix(P.bg, hue, 0.10 + seed * 0.05), 1);
+      cx.fillRect(x - bw / 2, H - bh, bw, bh);
+      cx.strokeStyle = rgba(mix(P.bg, hue, 0.30), 0.55); cx.lineWidth = 1;
+      for (var r = 1; r < 5; r++) { var y = H - bh + (bh / 5) * r; cx.beginPath(); cx.moveTo(x - bw / 2, y); cx.lineTo(x + bw / 2, y); cx.stroke(); }
+    }
+    var lamp = cx.createRadialGradient(W * 0.5, H * 0.06, 0, W * 0.5, H * 0.06, Math.max(W, H) * 0.85);
+    lamp.addColorStop(0, rgba(mix(P.bg, [214, 196, 150], 0.34), 0.85));
+    lamp.addColorStop(0.45, rgba(P.bg, 0.55));
+    lamp.addColorStop(1, rgba(P.bg, 0.92));
+    cx.fillStyle = lamp; cx.fillRect(0, 0, W, H);
+  }
+  function drawSkyline(hue, t) {
+    var x = 0, seed = 0, base = H * 0.98;
+    while (x < W) {
+      seed += 1;
+      var bw = 26 + rnd(seed) * 62, bh = H * (0.14 + rnd(seed + 5) * 0.24);
+      cx.fillStyle = rgba(mix(P.bg, hue, 0.07 + rnd(seed + 9) * 0.05), 1);
+      cx.fillRect(x, base - bh, bw, bh);
+      cx.strokeStyle = rgba(mix(P.bg, hue, 0.26), 0.5); cx.lineWidth = 1;
+      cx.strokeRect(x + 0.5, base - bh + 0.5, bw - 1, bh - 1);
+      if (rnd(seed + 3) > 0.72) {
+        cx.beginPath(); cx.moveTo(x, base - bh); cx.lineTo(x + bw / 2, base - bh - bw * 0.34); cx.lineTo(x + bw, base - bh);
+        cx.closePath(); cx.fillStyle = rgba(mix(P.bg, hue, 0.16), 1); cx.fill();
+      }
+      x += bw + 4;
+    }
+    cx.fillStyle = rgba(mix(P.bg, hue, 0.19), 1);
+    cx.beginPath(); cx.moveTo(W * 0.72, base); cx.lineTo(W * 0.72, H * 0.24); cx.lineTo(W * 0.755, H * 0.18);
+    cx.lineTo(W * 0.79, H * 0.24); cx.lineTo(W * 0.79, base); cx.closePath(); cx.fill();
+  }
+  function drawStars(hue, t) {
+    var cs = W * 0.5, cyy = H * 0.42;
+    var core = cx.createRadialGradient(cs, cyy, 0, cs, cyy, Math.max(W, H) * 0.7);
+    core.addColorStop(0, rgba(mix(P.bg, hue, 0.55), 0.9));
+    core.addColorStop(0.25, rgba(mix(P.bg, hue, 0.16), 0.75));
+    core.addColorStop(1, rgba(P.bg, 0.9));
+    cx.fillStyle = core; cx.fillRect(0, 0, W, H);
+    for (var i = 0; i < 260; i++) {
+      var a = rnd(i) * Math.PI * 2, rr = Math.pow(rnd(i + 13), 0.6) * Math.max(W, H) * 0.62;
+      var sw = t * 0.00004 * (0.4 + rnd(i + 21));
+      var px = cs + Math.cos(a + sw) * rr, py = cyy + Math.sin(a + sw) * rr * 0.5;
+      cx.fillStyle = rgba(mix(P.fg, hue, rnd(i + 41) * 0.6), 0.16 + rnd(i + 3) * 0.5);
+      cx.fillRect(px, py, 1.3, 1.3);
+    }
+  }
+  function drawBlocks(hue, t) {
+    var hover = cx.createRadialGradient(W * 0.5, H * 1.15, 0, W * 0.5, H * 1.15, W * 0.95);
+    hover.addColorStop(0, rgba(mix(P.bg, hue, 0.42), 0.85));
+    hover.addColorStop(1, rgba(P.bg, 0));
+    cx.fillStyle = hover; cx.fillRect(0, 0, W, H);
+    var cols = W < 640 ? 5 : 8, rows = 6;
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+      var s = r * cols + c, q = rnd(s) - 0.5;
+      var bw = (W / cols) * 0.94, bh = (H / rows) * 0.92;
+      var x = c * (W / cols) + (W / cols) * 0.03 + Math.sin(t * 0.00016 + s) * 3.5;
+      var y = r * (H / rows) - H * 0.14 + Math.cos(t * 0.00013 + s * 1.7) * 3;
+      cx.save(); cx.translate(x + bw / 2, y + bh / 2); cx.rotate(q * 0.055);
+      cx.beginPath();
+      cx.moveTo(-bw / 2, -bh / 2 + q * 16);
+      cx.lineTo(bw / 2, -bh / 2 - q * 10);
+      cx.lineTo(bw / 2 - q * 18, bh / 2);
+      cx.lineTo(-bw / 2 + q * 8, bh / 2 - q * 12);
+      cx.closePath();
+      cx.fillStyle = rgba(mix(P.bg, hue, 0.06 + rnd(s + 3) * 0.10), 1); cx.fill();
+      cx.strokeStyle = rgba(mix(P.bg, hue, 0.4), 0.5); cx.lineWidth = 1; cx.stroke();
+      cx.restore();
+    }
+  }
+  function drawBubbles(hue, t) {
+    var deep = cx.createLinearGradient(0, 0, 0, H);
+    deep.addColorStop(0, rgba(mix(P.bg, hue, 0.30), 1));
+    deep.addColorStop(1, rgba(mix(P.bg, [6, 24, 30], 0.9), 1));
+    cx.fillStyle = deep; cx.fillRect(0, 0, W, H);
+    var rays = cx.createLinearGradient(W * 0.3, 0, W * 0.1, H);
+    rays.addColorStop(0, rgba(mix(P.fg, hue, 0.5), 0.13)); rays.addColorStop(1, rgba(P.bg, 0));
+    cx.fillStyle = rays; cx.fillRect(0, 0, W * 0.6, H);
+    for (var i = 0; i < 60; i++) {
+      var s = 0.05 + rnd(i) * 0.22;
+      var px = rnd(i + 2) * W, span = H + 120;
+      var py = H + 60 - (((t * s * 0.06) + rnd(i + 9) * span) % span);
+      var rr = 1.4 + rnd(i + 5) * 3.6;
+      cx.beginPath(); cx.arc(px, py, rr, 0, Math.PI * 2);
+      cx.strokeStyle = rgba(mix(P.fg, hue, 0.4), 0.28); cx.lineWidth = 1; cx.stroke();
+    }
+    cx.fillStyle = rgba(mix(P.bg, hue, 0.05), 1);
+    cx.beginPath(); cx.moveTo(0, H);
+    for (var x = 0; x <= W; x += W / 14) cx.lineTo(x, H - 40 - Math.sin(x * 0.011) * 34 - rnd(x) * 22);
+    cx.lineTo(W, H); cx.closePath(); cx.fill();
+  }
+  function drawPage(hue, t) {
+    cx.save();
+    cx.translate(W * 0.5, H * 0.44); cx.rotate(-0.05 + Math.sin(t * 0.00008) * 0.006);
+    var pw = Math.min(W * 0.74, 760), ph = Math.min(H * 0.74, 560);
+    cx.fillStyle = rgba(mix(P.bg, hue, 0.16), 1); cx.fillRect(-pw / 2, -ph / 2, pw, ph);
+    cx.strokeStyle = rgba(mix(P.bg, hue, 0.5), 0.65); cx.lineWidth = 1; cx.strokeRect(-pw / 2 + 0.5, -ph / 2 + 0.5, pw - 1, ph - 1);
+    for (var i = 1; i < 13; i++) {
+      var y = -ph / 2 + (ph / 14) * i;
+      cx.beginPath(); cx.moveTo(-pw / 2 + 26, y); cx.lineTo(pw / 2 - 26 - (i % 4) * 34, y);
+      cx.strokeStyle = rgba(mix(P.bg, hue, 0.36), 0.34); cx.stroke();
+    }
+    cx.save(); cx.translate(0, ph * 0.06); cx.rotate(t * 0.00006);
+    cx.strokeStyle = rgba(mix(P.bg, hue, 0.85), 0.72); cx.lineWidth = 1.6;
+    var R = Math.min(pw, ph) * 0.3;
+    cx.beginPath(); cx.arc(0, 0, R * 0.86, 0, Math.PI * 2); cx.stroke();
+    cx.beginPath();
+    for (var k = 0; k < 5; k++) {
+      var a1 = -Math.PI / 2 + k * (Math.PI * 4 / 5), a2 = -Math.PI / 2 + (k + 1) * (Math.PI * 4 / 5);
+      var p1x = Math.cos(a1) * R, p1y = Math.sin(a1) * R, p2x = Math.cos(a2) * R, p2y = Math.sin(a2) * R;
+      if (k === 0) cx.moveTo(p1x, p1y); cx.lineTo(p2x, p2y);
+    }
+    cx.closePath(); cx.stroke();
+    cx.beginPath(); cx.ellipse(0, 0, R * 0.3, R * 0.16, 0, 0, Math.PI * 2);
+    cx.strokeStyle = rgba(mix(P.bg, hue, 1), 0.85); cx.stroke();
+    cx.beginPath(); cx.arc(0, 0, R * 0.07, 0, Math.PI * 2);
+    cx.fillStyle = rgba(mix(P.bg, hue, 1), 0.85); cx.fill();
+    cx.restore(); cx.restore();
+  }
+  function drawDust(hue, t) {
+    var g = cx.createRadialGradient(W * 0.5, H * 0.5, 0, W * 0.5, H * 0.5, Math.max(W, H) * 0.8);
+    g.addColorStop(0, rgba(mix(P.bg, hue, 0.14), 1));
+    g.addColorStop(1, rgba(mix(P.bg, P.deep, 0.9), 1));
+    cx.fillStyle = g; cx.fillRect(0, 0, W, H);
+  }
+
+  function drawScene(s, t) {
+    backdrop(s.hue);
+    if (s.mode === "shelves") drawShelves(s.hue, t);
+    else if (s.mode === "skyline") drawSkyline(s.hue, t);
+    else if (s.mode === "stars") drawStars(s.hue, t);
+    else if (s.mode === "blocks") drawBlocks(s.hue, t);
+    else if (s.mode === "bubbles") drawBubbles(s.hue, t);
+    else if (s.mode === "page") drawPage(s.hue, t);
+    else drawDust(s.hue, t);
+  }
+  function render(now) {
+    var t = reduce ? 0 : now - t0;
+    if (W && H && P) {
+      blend = reduce ? 1 : Math.min(1, (now - sceneStarted) / 850);
+      if (blend < 1) {
+        drawScene(prevScene, t);
+        cx.save(); cx.globalAlpha = blend; drawScene(cur, t); cx.restore();
+      } else { drawScene(cur, t); }
+      for (var i = 0; i < motes.length; i++) {
+        var m = motes[i];
+        cx.fillStyle = rgba(mix(P.fg, cur.hue, m.d), m.a);
+        cx.beginPath();
+        if (!reduce) { cx.arc(m.x + Math.sin(t * 0.0004 + m.d * 9) * 12, m.y + Math.cos(t * 0.0003 + m.d * 7) * 10, m.r, 0, Math.PI * 2); }
+        else { cx.arc(m.x, m.y, m.r, 0, Math.PI * 2); }
+        cx.fill();
+      }
+    }
+    if (!reduce) frame = requestAnimationFrame(render);
+  }
+  function setScene(name) {
+    var s = SCENES[name] || SCENES.void;
+    if (s === cur) return;
+    prevScene = cur; cur = s; blend = reduce ? 1 : 0; sceneStarted = performance.now();
+    if (reduce) render(performance.now());
+  }
+
+  /* ═══ 打字机 ════════════════════════════════════════════ */
+  var typer = null;
+  function typeInto(el, html) {
+    if (typer) { clearInterval(typer); typer = null; }
+    if (reduce) { el.innerHTML = html; state.typing = false; return; }
+    var tmp = document.createElement("div"); tmp.innerHTML = html;
+    var plain = tmp.textContent, out = "", i = 0;
+    state.typing = true;
+    el.innerHTML = "";
+    var speed = plain.length > 90 ? 16 : 26;
+    typer = setInterval(function () {
+      i += 1;
+      out = plain.slice(0, i);
+      el.textContent = out;
+      el.insertAdjacentHTML("beforeend", '<span class="cur">▌</span>');
+      if (i >= plain.length) { clearInterval(typer); typer = null; state.typing = false; el.innerHTML = html; }
+    }, speed);
+  }
+  function finishTyping() {
+    if (!state.typing) return false;
+    clearInterval(typer); typer = null; state.typing = false;
+    elText.innerHTML = currentHTML; return true;
+  }
+
+  /* ═══ 解锁与理智 ════════════════════════════════════════ */
+  function unlock(ids) {
+    if (!ids) return;
+    var fresh = [];
+    ids.forEach(function (id) { if (CODEX_MAP[id] && !state.unlocked[id]) { state.unlocked[id] = 1; fresh.push(CODEX_MAP[id].name); } });
+    if (fresh.length) { toast(fresh); renderCodex(); updateCount(); }
+  }
+  function updateCount() {
+    var n = Object.keys(state.unlocked).length;
+    elCodexCount.textContent = n + "/" + CODEX.length;
+    elCodexProg.textContent = "已解锁 " + n + " / " + CODEX.length;
+  }
+  function toast(names) {
+    var token = run;
+    names.slice(0, 3).forEach(function (nm, i) {
+      toastTimers.push(setTimeout(function () {
+        if (token !== run) return;
+        var d = document.createElement("div");
+        d.className = "toast__row"; d.textContent = "档案已解锁 · " + nm;
+        elToasts.appendChild(d);
+        setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 3200);
+      }, i * 130));
+    });
+  }
+  function setSan(v, quiet) {
+    var before = state.san;
+    state.san = Math.max(0, Math.min(100, v));
+    elSanFill.style.width = state.san + "%";
+    elSanNum.textContent = state.san;
+    elSanFill.style.background = state.san >= 70 ? "var(--accent)" : (state.san >= 40 ? "var(--brass)" : "var(--danger)");
+    if (!quiet && state.san < before) {
+      elSanMeter.classList.remove("hit"); void elSanMeter.offsetWidth; elSanMeter.classList.add("hit");
+    }
+  }
+
+  /* ═══ 播放 ══════════════════════════════════════════════ */
+  var currentHTML = "", awaitingChoice = false, cardTimer = null, toastTimers = [], run = 0;
+
+  function stopPlayback() {
+    clearTimeout(cardTimer); cardTimer = null;
+    clearInterval(typer); typer = null; state.typing = false;
+    awaitingChoice = false;
+  }
+
+  function chapterCard(ch, cb) {
+    var c = CH[ch];
+    $("cardNo").textContent = c.no + " · " + (ch + 1) + " / " + CH.length;
+    $("cardTitle").textContent = c.title;
+    $("cardEn").textContent = c.en;
+    elCard.hidden = false; elBox.hidden = true; elChoices.hidden = true;
+    setScene(c.scene);
+    elChapNo.textContent = c.no; elChapTitle.textContent = c.title;
+    state.visited[ch] = 1; renderToc(); save();
+    cardTimer = setTimeout(function () {
+      cardTimer = null; if (state.finished) return;
+      elCard.hidden = true; elBox.hidden = false; cb();
+    }, reduce ? 300 : 1700);
+  }
+
+  function startChapter(ch, li) {
+    stopPlayback();
+    state.ch = ch; state.li = li || 0; state.finished = false;
+    elCard.hidden = true;
+    elChoices.hidden = true; elBox.dataset.state = "idle";
+    if (li) { showLine(); } else { chapterCard(ch, showLine); }
+  }
+
+  function showLine() {
+    var c = CH[state.ch];
+    if (state.li >= c.lines.length) { return endChapter(); }
+    var ln = c.lines[state.li];
+    if (ln.scene) setScene(ln.scene);
+    var key = state.ch + ":" + state.li;
+    if (!state.applied[key]) {
+      if (ln.san) setSan(state.san + ln.san);
+      if (ln.unlock) unlock(ln.unlock);
+      if (ln.fx === "shake") setSan(state.san - 3);
+      state.applied[key] = 1;
+    }
+    if (ln.fx === "shake" && !reduce) {
+      elBox.classList.remove("shake"); void elBox.offsetWidth; elBox.classList.add("shake");
+    }
+    elWho.textContent = ln.w || "";
+    elWho.dataset.role = ln.w || "旁白";
+    elWho.hidden = !ln.w;
+    currentHTML = ln.t;
+    elHint.textContent = "点击继续";
+    elBox.dataset.state = "idle";
+    awaitingChoice = false;
+    typeInto(elText, currentHTML);
+    elBox.hidden = false;
+    save();
+  }
+
+  function advance() {
+    if (awaitingChoice || cardTimer !== null || elBox.hidden || state.finished || !$("startScreen").hidden) return;
+    if (finishTyping()) return;
+    state.li += 1; showLine();
+  }
+
+  function endChapter() {
+    var c = CH[state.ch];
+    if (c.choices && state.choices[state.ch] === undefined) { renderChoices(c); return; }
+    if (state.ch + 1 < CH.length) { startChapter(state.ch + 1, 0); }
+    else { finish(); }
+  }
+
+  function renderChoices(c) {
+    awaitingChoice = true; save();
+    elBox.hidden = true;
+    elChoices.hidden = false;
+    elChoices.innerHTML = "";
+    c.choices.forEach(function (opt, index) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "choice";
+      b.innerHTML = opt.t + '<span>' + opt.hint + "</span>";
+      b.addEventListener("click", function () {
+        if (!awaitingChoice || state.choices[state.ch] !== undefined) return;
+        state.choices[state.ch] = index;
+        elChoices.hidden = true; elChoices.innerHTML = "";
+        awaitingChoice = false; elBox.hidden = false; elBox.dataset.state = "idle";
+        if (opt.san) setSan(state.san + opt.san);
+        if (opt.unlock) unlock(opt.unlock);
+        if (typeof opt.go === "number") startChapter(opt.go, 0);
+        else { state.ch += 1; startChapter(state.ch, 0); }
+      });
+      elChoices.appendChild(b);
+    });
+    elChoices.querySelector("button").focus({ preventScroll:true });
+  }
+
+  function finish() {
+    state.finished = true;
+    stopPlayback();
+    var txt, title;
+    if (state.san >= 34) { title = "你合上了卷宗"; txt = "灯还是那盏灯。你记住的是一串人名、一串书名、一串坐标。你可以走了。"; }
+    else if (state.san >= 29) { title = "你合上了卷宗"; txt = "但你的手还按在封面上。你发现自己正在默算，南纬 47 度 9 分落在哪一片海域。"; }
+    else if (state.san >= 24) { title = "你合上了卷宗"; txt = "手没有离开。你在想，那串坐标是不是真的能用，以及为什么有人会把它们写得那么精确。"; }
+    else { title = "卷宗自己合上了"; txt = "管理员已经不在桌边。桌子后面是一堵墙，墙上没有门。你不太确定自己是从哪一边进来的。"; }
+    $("endTitle").textContent = title;
+    $("endText").textContent = txt;
+    $("endCodex").textContent = Object.keys(state.unlocked).length + " / " + CODEX.length;
+    $("endSan").textContent = state.san;
+    $("endCh").textContent = Object.keys(state.visited).length;
+    elBox.hidden = true; elChoices.hidden = true; elCard.hidden = true;
+    $("endScreen").hidden = false;
+    closeAll();
+    save();
+    $("btnAgain").focus({ preventScroll:true });
+  }
+
+  /* ═══ 抽屉 ══════════════════════════════════════════════ */
+  function renderCodex() {
+    var html = '<p class="ent__sources">出处分为洛氏原著、同时代共创、德雷斯体系、后世分类、后人扩展与流行文化。文学解读不等于所有作品共有的规则。</p>';
+    CAT_ORDER.forEach(function (cat) {
+      var items = CODEX.filter(function (e) { return e.cat === cat; });
+      if (!items.length) return;
+      html += '<h3 class="cat">' + cat + "</h3>";
+      items.forEach(function (e) {
+        var on = !!state.unlocked[e.id];
+        html += '<div class="ent' + (on ? "" : " locked") + '" data-id="' + e.id + '">' +
+          '<div class="ent__top"><span class="ent__name">' + (on ? e.name : "▓▓▓▓") + "</span>" +
+          '<span class="ent__en">' + (on ? e.en : "· · ·") + "</span>" +
+          '<span class="tag" data-k="' + e.tag + '">' + e.tag + "</span></div>" +
+          '<p class="ent__body">' + (on ? e.body : "尚未解锁。继续读下去，或在选项里主动索要。") + "</p>";
+        if (on && ENTRY_SOURCES[e.id]) {
+          html += '<p class="ent__sources">阅读来源：' + ENTRY_SOURCES[e.id].map(function (key) {
+            var ref = REFERENCES[key]; return '<a href="' + ref[1] + '" target="_blank" rel="noopener noreferrer">' + ref[0] + '</a>';
+          }).join(" · ") + "</p>";
+        }
+        html += "</div>";
+      });
+    });
+    elCodexBody.innerHTML = html;
+  }
+  function renderToc() {
+    var html = "";
+    CH.forEach(function (c, i) {
+      var seen = !!state.visited[i];
+      html += '<button class="tocitem' + (i === state.ch ? " on" : "") + '" type="button" data-i="' + i + '"' +
+        (seen ? "" : " disabled") + '><span class="tocitem__no">' + c.no + '</span><span class="tocitem__t">' + c.title + "</span></button>";
+    });
+    elTocBody.innerHTML = html;
+  }
+  elTocBody.addEventListener("click", function (ev) {
+    var b = ev.target.closest(".tocitem"); if (!b || b.disabled) return;
+    closeAll(); startChapter(parseInt(b.dataset.i, 10), 0);
+  });
+  var previousFocus = null;
+  var background = document.querySelectorAll(".hud, .stagewrap, .box, .choices, .scr");
+  function closeAll() {
+    elCodex.hidden = true; elToc.hidden = true; elScrim.hidden = true;
+    background.forEach(function (el) { el.inert = false; });
+    if (previousFocus && previousFocus.isConnected && previousFocus.getClientRects().length) previousFocus.focus({ preventScroll:true });
+    previousFocus = null;
+  }
+  function openDrawer(el) {
+    closeAll(); previousFocus = document.activeElement;
+    el.hidden = false; elScrim.hidden = false;
+    background.forEach(function (item) { item.inert = true; });
+    el.querySelector(".drawer__close").focus({ preventScroll:true });
+  }
+  $("codexClose").addEventListener("click", closeAll);
+  $("tocClose").addEventListener("click", closeAll);
+  elScrim.addEventListener("click", closeAll);
+  $("codexBtn").addEventListener("click", function () { renderCodex(); openDrawer(elCodex); });
+  $("tocBtn").addEventListener("click", function () { renderToc(); openDrawer(elToc); });
+
+  /* ═══ 输入 ══════════════════════════════════════════════ */
+  elBox.addEventListener("click", advance);
+  $("nextBtn").addEventListener("click", function (e) { e.stopPropagation(); advance(); });
+  document.addEventListener("keydown", function (e) {
+    var drawer = !elCodex.hidden ? elCodex : (!elToc.hidden ? elToc : null);
+    if (drawer) {
+      if (e.key === "Escape") { e.preventDefault(); closeAll(); }
+      if (e.key === "Tab") {
+        var items = Array.from(drawer.querySelectorAll("button:not(:disabled), a[href]"));
+        var first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      return;
+    }
+    if (!$("startScreen").hidden || !$("endScreen").hidden) return;
+    // 保留按钮自身的 Enter / Space 激活，避免目录和选项被全局继续键吞掉。
+    if ((e.key === " " || e.key === "Enter") && e.target.closest("button, a, input, textarea, select")) return;
+    if (e.key === " " || e.key === "Enter" || e.key === "ArrowRight" || e.key === "ArrowDown") {
+      if (awaitingChoice) return;
+      e.preventDefault(); advance();
+    }
+    if (e.key === "c" || e.key === "C") { renderCodex(); openDrawer(elCodex); }
+  });
+
+  /* ═══ 启动 ══════════════════════════════════════════════ */
+  function reset() {
+    stopPlayback(); closeAll(); run += 1;
+    toastTimers.forEach(clearTimeout); toastTimers.length = 0;
+    state = freshState();
+    setSan(100, true); updateCount(); renderCodex(); renderToc();
+    $("endScreen").hidden = true; $("startScreen").hidden = true;
+    elChoices.hidden = true; elToasts.innerHTML = "";
+    startChapter(0, 0);
+  }
+  function continueFrom(d) {
+    var restored = normalizeSave(d); if (!restored) return;
+    stopPlayback(); closeAll(); state = restored;
+    setSan(state.san, true); updateCount(); renderCodex();
+    $("startScreen").hidden = true; $("endScreen").hidden = true; elCard.hidden = true;
+    setScene(CH[state.ch].scene);
+    elChapNo.textContent = CH[state.ch].no; elChapTitle.textContent = CH[state.ch].title;
+    state.visited[state.ch] = 1; renderToc();
+    if (state.finished) finish(); else showLine();
+  }
+  $("btnStart").addEventListener("click", reset);
+  $("btnAgain").addEventListener("click", reset);
+  $("btnResume").addEventListener("click", function () { if (pending) continueFrom(pending); });
+  $("btnCodexEnd").addEventListener("click", function () { renderCodex(); openDrawer(elCodex); });
+
+  function boot(hotData) {
+    resize(); renderToc(); renderCodex(); setSan(100, true); updateCount();
+    elBox.hidden = true;
+    window.addEventListener("resize", resize);
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", readPalette);
+    var mo = new MutationObserver(readPalette);
+    mo.observe(document.documentElement, { attributes:true, attributeFilter:["data-theme"] });
+    if (!reduce) frame = requestAnimationFrame(render); else render(performance.now());
+    motionQuery.addEventListener("change", function (e) {
+      reduce = e.matches;
+      if (frame !== null) cancelAnimationFrame(frame);
+      frame = null;
+      if (reduce) finishTyping();
+      render(performance.now());
+    });
+
+    var hot = normalizeSave(hotData);
+    if (hot) { continueFrom(hotData); return; }
+    pending = load();
+    if (pending) {
+      $("btnResume").hidden = false;
+      $("btnResume").textContent = pending.finished ? "查看上次结语与档案" : "继续上次阅读 · " + CH[pending.ch].no;
+    }
+  }
+
+  if (window.claude && window.claude.hot && window.claude.hot.ready) {
+    window.claude.hot.ready(function (d) { boot(d || {}); });
+  } else {
+    boot((window.claude && window.claude.hot && window.claude.hot.data) || {});
+  }
+})();
+</script>
+
+</body>
+</html>

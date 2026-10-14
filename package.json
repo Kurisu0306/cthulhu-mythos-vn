@@ -1,0 +1,8 @@
+{
+  "name": "cthulhu-mythos-vn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "米斯卡托尼克讲义 — 单文件视觉小说",
+  "scripts": { "test": "node tests/browser.cjs" },
+  "devDependencies": { "playwright": "1.62.1" }
+}
